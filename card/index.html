@@ -72,9 +72,27 @@
 <!-- START PAGE CONTENT -->
 <div id="page">
 
+  <h2>So you need an API key?</h2>
+
   <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus harum nihil saepe doloremque ea necessitatibus incidunt fugit quas optio quae. Officia magnam explicabo totam accusantium accusamus? Consectetur ab tempore voluptates?
+    This post walks through how to generate an API key for an OpenAI account. If you need an OpenAI account, you can <a href="https://platform.openai.com/signup" target="_blank">create one here</a>. When you create a new OpenAI account, you are given a limited amount of free API credits. If you created an account some time ago, however, these may have expired. If your credits have expired, you will need to enter a <a href="https://platform.openai.com/account/billing/overview" target="_blank">billing method</a> before you can use the API. You can check the state of any credits <a href="https://platform.openai.com/usage" target="_blank">here</a>. 
   </p>
+  <p>
+    Login to <a href="https://openai.com/" target="_blank">OpenAI</a>, and navigate to the <a href="https://platform.openai.com/docs/" target="_blank">API documentation</a>. 
+  </p>
+  <div class="featured_img_center">
+    <a href="images/OpenAI_keys.png"><img src="images/OpenAI_keys.png" ALT="Screenshot of the OpenAI API Keys page showing where to click to create a new key." class="list_img_file" style="border: 1px solid #a5a5a5;"/></a>
+  </div>
+  <p>Once you are looking at the API docs, follow the steps outlined in the image above. That is:
+  <ol>
+    <li>Select "API keys" from the left menu</li>
+    <li>Click "+ Create new secret key"</li>
+  </ol>
+  <p>After solving a puzzle to prove you're human, you will be provided with your API key. If for some reason, you are also looking for an "API Base," this is probably it: <code>https://api.openai.com/v1/chat/completions</code> </p>
+      <p>
+    <span style="background:yellow;">If you receive an error when trying to use your key, make sure to check the state of any credits <a href="https://platform.openai.com/usage" target="_blank">here</a>. If you don't have any credits, you will need a billing method on file with OpenAI.</span>
+  </p>
+
 
 </div>
 
