@@ -36,7 +36,7 @@
     a2a_config.num_services = 10;
     a2a_config.show_title = 1;
   </script>
-  <script async src="https://static.addtoany.com/menu/page.js"></script>
+  <script async src="https://static.addtoany.com/menu/page.js" onerror="alert('test');"></script>
 
   <script src="js/encryption.js?v=2024-01-30"></script>
 
@@ -1625,11 +1625,11 @@ window.onbeforeunload = function () {
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (document.querySelector('script[src="https://static.addtoany.com/menu/page.js"]') == null) {
+  if ( document.readyState === "complete" ) {
+    if (a2a) {
       console.log("no share")
-      share.style.display = "none"; 
+    //  share.style.display = "none"; 
     }
-  });
+  };
 </script>
 </BODY></HTML>
