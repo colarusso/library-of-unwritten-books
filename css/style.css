@@ -68,13 +68,18 @@ a.title_home {
 
 .home {
 	float:left;
-	width:72px;
+	width:35px;
 	margin-right:25px;
 	text-align:left;
 }
 
 .home_btn {
 	height: 35px;
+}
+
+.a2a_svg{
+	height: 35px;
+	width: 35px;
 }
 
 #query {
@@ -498,12 +503,19 @@ code{
 
 	.home {
 		position: absolute;
-		width:50px;
-		margin:0px !important;
+		width:58px;
+	}
+	.share{
+		width: 58px;
 	}
 	.home_btn {
 		height:25px;
 	}
+	.a2a_svg{
+		height: 25px !important;
+		width: 25px !important;
+	}
+
 	.share_btn{
 		height:25px;
 	}	
