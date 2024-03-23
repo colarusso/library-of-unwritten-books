@@ -1034,7 +1034,7 @@ async function openai_call(prompt_text) {
             json_mode = 2;
             openai_call(prompt_text);
           } else {
-            LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired, or the model used by this tools' author my have been retired.`
+            LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under <a herf="/card/">Library Card</a> to get new ones.`
             output_to=0;
             behavior="stop"
             //LLM_text += "\n"+error            
@@ -1046,7 +1046,7 @@ async function openai_call(prompt_text) {
             document.getElementById('api_key').focus();
           }            
         } catch (error) {
-          LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired, or the model used by this tools' author my have been retired.`
+          LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under <a herf="/card/">Library Card</a> to get new ones.`
           output_to=0;
           behavior="stop"
           //LLM_text += "\n"+error            
@@ -1528,7 +1528,7 @@ window.onbeforeunload = function () {
 <div class="content">
   <!-- START PAGE CONTENT -->
   <div id="page">
-    To check out an unwritten book, you must become a reader-author. Read; reply; repeat. Remember, what you read is a reflection of what you and other authors have written, and where one ends a story is at least as important as where one begins.  
+    To check out an unwritten book, answer a few questions, then: read; reply; repeat. Remember, what you read is a reflection of what you and other authors have written, and where one ends a story is at least as important as where one begins.  
   <hr/>
 
   <div id="main_wrapper">
