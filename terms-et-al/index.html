@@ -26,7 +26,7 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
 <meta name="apple-mobile-web-app-capable" content="no" />
-<link rel="apple-touch-icon" href="images/XXXX.png"/>
+<link rel="apple-touch-icon" href="images/home.png"/>
 
 <!-- JS & style -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -39,7 +39,7 @@
   a2a_config.num_services = 10;
   a2a_config.show_title = 1;
 </script>
-<script async src="js/page.js"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 
 </HEAD>
 <BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0">
@@ -52,7 +52,7 @@
   <div class="home">
     <a href="./" tabindex="1"><img src="images/home.png" class="home_btn"></a>
   </div>  
-  <div class="share">
+  <div id="share">
       <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://libraryofunwrittenbooks.org/terms-et-al/" data-a2a-title="Terms et al. | The Library of Unwritten Books">
         <a class="a2a_button_mastodon"></a>
         <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
@@ -107,6 +107,14 @@
 </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('script[src="https://static.addtoany.com/menu/page.js"]') == null) {
+      console.log("no share")
+      share.style.display = "none"; 
+    }
+  });
+</script>
 </BODY></HTML>
 
 

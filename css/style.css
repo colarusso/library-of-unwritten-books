@@ -92,7 +92,7 @@ a.title_home {
 	border:1px solid #555;
 }
 
-.share {
+#share {
 	float:right;
 	width:72px;
 	height:35px;
@@ -505,7 +505,7 @@ code{
 		position: absolute;
 		width:58px;
 	}
-	.share{
+	#share{
 		width: 58px;
 	}
 	.home_btn {
