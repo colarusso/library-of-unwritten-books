@@ -11,6 +11,16 @@ body {
 	line-height: 22px;
 }
 
+button {
+	-webkit-appearance:none;
+	opacity: 1;
+	border-radius: 3px;
+	color:black;
+	border: 1px solid #7b7b7b;
+	padding: 3px;
+	background: rgb(211, 211, 211);
+}
+
 blockquote {
 	border-left: 8px solid #999999;
 	padding-left: 15px;
