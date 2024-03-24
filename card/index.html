@@ -72,10 +72,35 @@
 <!-- START PAGE CONTENT -->
 <div id="page">
 
+  <p>
+    To use the library you need access to a <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank">large language model</a> (LLM). We're calling the credentials for this access your "library card."
+  </p>
+
+  <h2>Use your own LLM Provider (Library Card)</h2>
+
+  <p>
+    If <i>API Key</i> below is empty, the text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint and you can keep using the library even after the limit is hit. If you have no idea what a base or API key are, see the section below.  
+  </p>
+
+  <p>
+    API Base: <input id="api_base" style="width:400px">
+  </p>
+  <p>
+   &nbsp;API Key: <input id="api_key" style="width:400px">
+  </p>
+
+  <p>
+    This site stores this information along with your current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
+  </p>
+
   <h2>So you need an API key?</h2>
 
   <p>
-    This post walks through how to generate an API key for an OpenAI account. If you need an OpenAI account, you can <a href="https://platform.openai.com/signup" target="_blank">create one here</a>. When you create a new OpenAI account, you are given a limited amount of free API credits. If you created an account some time ago, however, these may have expired. If your credits have expired, you will need to enter a <a href="https://platform.openai.com/account/billing/overview" target="_blank">billing method</a> before you can use the API. You can check the state of any credits <a href="https://platform.openai.com/usage" target="_blank">here</a>. 
+    You can access the Library with a number of LLM providers, as long as they use the same syntax as the OpenAI API. For example, you could download LM Studio and <a href="https://github.com/SuffolkLITLab/prompts?tab=readme-ov-file#using-lm-studio-with-lit-prompts" target="_blank">point to a local LLM</a> ensuring your stories stay on your computer. However, for simplicity's sake, we will only walk through how to set up OpenAI credentials here. 
+  </p>
+
+  <p>
+    If you need an OpenAI account, you can <a href="https://platform.openai.com/signup" target="_blank">create one here</a>. When you create a new OpenAI account, you are given a limited amount of free API credits. If you created an account some time ago, however, these may have expired. If your credits have expired, you will need to enter a <a href="https://platform.openai.com/account/billing/overview" target="_blank">billing method</a> before you can use the API. You can check the state of any credits <a href="https://platform.openai.com/usage" target="_blank">here</a>. 
   </p>
   <p>
     Login to <a href="https://openai.com/" target="_blank">OpenAI</a>, and navigate to the <a href="https://platform.openai.com/docs/" target="_blank">API documentation</a>. 
@@ -88,7 +113,7 @@
     <li>Select "API keys" from the left menu</li>
     <li>Click "+ Create new secret key"</li>
   </ol>
-  <p>After solving a puzzle to prove you're human, you will be provided with your API key. If for some reason, you are also looking for an "API Base," this is probably it: <code>https://api.openai.com/v1/chat/completions</code> </p>
+  <p>After solving a puzzle to prove you're human, you will be provided with your API key. Use this and the "API Base" <code>https://api.openai.com/v1/chat/completions</code> above.</p>
       <p>
     <span style="background:yellow;">If you receive an error when trying to use your key, make sure to check the state of any credits <a href="https://platform.openai.com/usage" target="_blank">here</a>. If you don't have any credits, you will need a billing method on file with OpenAI.</span>
   </p>
@@ -106,6 +131,30 @@
   <span class="byline">Site by <a href="https://mastodon.social/@Colarusso" target="_blank">David Colarusso</a></span>
 </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load saved text from localStorage
+    var api_key = localStorage.getItem('api_key');
+    if (api_key) {
+        document.getElementById('api_key').value = api_key;
+    }
+    // Save text to localStorage on change
+    document.getElementById('api_key').addEventListener('input', function() {
+        localStorage.setItem('api_key', this.value);
+    });
+
+    // Load saved text from localStorage
+    var api_base = localStorage.getItem('api_base') //|| "https://api.openai.com/v1/chat/completions";
+    if (api_base) {
+        document.getElementById('api_base').value = api_base;
+    }
+    // Save text to localStorage on change
+    document.getElementById('api_base').addEventListener('input', function() {
+        localStorage.setItem('api_base', this.value);
+    });
+  });
+</script>
 
 </BODY></HTML>
 

@@ -44,7 +44,7 @@
 
 localStorage.setItem('templates',JSON.stringify({
   "Read-write a new story": {
-    "prompt": "Produce a JSON object where the key is \"genera\" and the value is ```{{What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}```",
+    "prompt": "Produce a JSON object where the key is \"genera\" and the value is ```{{6. What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}```",
     "model": "gpt-3.5-turbo-1106",
     "temperature": 0,
     "max_tokens": 250,
@@ -55,7 +55,7 @@ localStorage.setItem('templates',JSON.stringify({
     "hide_button": false
   },
   "Frame": {
-    "prompt": "You are the game master for a table-top role-playing game. You are playing with one other player. They will inhabit the role of the protagonist, making decisions for how they move through the world. You will craft a story around their decisions, providing texture and playing the parts of all the other characters. First, I'm going to give you some context so you understand the narrative expectations. \n\n========\n\nSetting and Genera: \n\n- Your story telling should adhere to the following genera expectations: {{What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}\n- Your story will start at the following place: {{Where does your story take place?}}\n- Your story is set at the following time: {{When does your story take place?}}\n\n========\n\nThe Protagonist:\n\nEarlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.\n\n- name: {{What is your character's name?}}\n- additional notes: {{Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)? Keep it brief.}}\n\n========\n\nAdditional Notes:\n\nYou also asked them if there were anything else would like you to incorporate into the story. This is what they said: \n\n{{Is there anything else you would like me to incorporate into the story? Special \"notes\" you have for this story? Please, keep it short.}}\n\n========\n\nStory Arc:\n\nAs the story unfolds you should help shape it to follow this basic structure: \n\n- Section 1 (Exposition): The beginning of the story where the characters, setting, and background information are introduced.\n- Section 2 (Rising Action): The series of events that build tension and develop the conflict. This part of the story usually includes obstacles, challenges, and complications that the characters must face.\n- Section 3 (Climax): The turning point or the highest point of intensity in the story. It is the moment where the conflict reaches its peak, and the outcome is uncertain. The climax often involves a significant decision, confrontation, or revelation.\n- Section 4 (Falling Action): The events that occur after the climax, where the tension starts to decrease. Loose ends are tied up, and the story begins to move towards its resolution.\n- Section 5 (Resolution): The final part of the story where the conflict is resolved, and the loose ends are tied up. It provides closure and answers any remaining questions. The resolution can be either positive or negative, depending on the outcome of the story. \n\n========\n\n",
+    "prompt": "You are the game master for a table-top role-playing game. You are playing with one other player. They will inhabit the role of the protagonist, making decisions for how they move through the world. You will craft a story around their decisions, providing texture and playing the parts of all the other characters. First, I'm going to give you some context so you understand the narrative expectations. \n\n========\n\nSetting and Genera: \n\n- Your story telling should adhere to the following genera expectations: {{6. What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}\n- Your story will start at the following place: {{5. Where does your story take place?}}\n- Your story is set at the following time: {{4. When does your story take place?}}\n\n========\n\nThe Protagonist:\n\nEarlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.\n\n- name: {{3. What is your character's name?}}\n- additional notes: {{2. Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)? Keep it brief, and it's okay to say, \"No.\"}}\n\n========\n\nAdditional Notes:\n\nYou also asked them if there were anything else would like you to incorporate into the story. This is what they said: \n\n{{1. Is there anything else you would like me to incorporate into the story? Special \"notes\" you have for this story? Please, keep it short, and it's okay to say, \"No.\"}}\n\n========\n\nStory Arc:\n\nAs the story unfolds you should help shape it to follow this basic structure: \n\n- Section 1 (Exposition): The beginning of the story where the characters, setting, and background information are introduced.\n- Section 2 (Rising Action): The series of events that build tension and develop the conflict. This part of the story usually includes obstacles, challenges, and complications that the characters must face.\n- Section 3 (Climax): The turning point or the highest point of intensity in the story. It is the moment where the conflict reaches its peak, and the outcome is uncertain. The climax often involves a significant decision, confrontation, or revelation.\n- Section 4 (Falling Action): The events that occur after the climax, where the tension starts to decrease. Loose ends are tied up, and the story begins to move towards its resolution.\n- Section 5 (Resolution): The final part of the story where the conflict is resolved, and the loose ends are tied up. It provides closure and answers any remaining questions. The resolution can be either positive or negative, depending on the outcome of the story. \n\n========\n\n",
     "model": "gpt-3.5-turbo",
     "temperature": 0.7,
     "max_tokens": 250,
@@ -79,7 +79,7 @@ localStorage.setItem('templates',JSON.stringify({
   "Introduction": {
     "prompt": "{{scratch}}\n\nGiven the above, I would like you to write the opening paragraph for the story. Lean heavily into the genera expectations and end with a decision point for your protagonist. When you're done I'd like you to return your answer as a JSON object with two key-value pairs. The first key is \"opening\" and its value should be the opening text of the story. The second key is \"title\" and it contains an evocative and appropriate title for the type of story you want to tell. \n\n",
     "model": "gpt-4-turbo-preview",
-    "temperature": 0.75,
+    "temperature": 0.9,
     "max_tokens": 500,
     "output": 1,
     "json_mode": 1,
@@ -226,108 +226,6 @@ function loadFile(filePath) {
         return data
     })
 };
-
-const default_prompts = {
-  "Read-write a new story": {
-    "prompt": "Produce a JSON object where the key is \"genera\" and the value is ```{{What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}```",
-    "model": "gpt-3.5-turbo-1106",
-    "temperature": 0,
-    "max_tokens": 250,
-    "output": 1,
-    "json_mode": 1,
-    "output_to": 4,
-    "behavior": "Frame",
-    "hide_button": false
-  },
-  "Frame": {
-    "prompt": "You are the game master for a table-top role-playing game. You are playing with one other player. They will inhabit the role of the protagonist, making decisions for how they move through the world. You will craft a story around their decisions, providing texture and playing the parts of all the other characters. First, I'm going to give you some context so you understand the narrative expectations. \n\n========\n\nSetting and Genera: \n\n- Your story telling should adhere to the following genera expectations: {{What genera does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}\n- Your story will start at the following place: {{Where does your story take place?}}\n- Your story is set at the following time: {{When does your story take place?}}\n\n========\n\nThe Protagonist:\n\nEarlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.\n\n- name: {{What is your character's name?}}\n- additional notes: {{Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)? Keep it brief.}}\n\n========\n\nAdditional Notes:\n\nYou also asked them if there were anything else would like you to incorporate into the story. This is what they said: \n\n{{Is there anything else you would like me to incorporate into the story? Special \"notes\" you have for this story? Please, keep it short.}}\n\n========\n\nStory Arc:\n\nAs the story unfolds you should help shape it to follow this basic structure: \n\n- Section 1 (Exposition): The beginning of the story where the characters, setting, and background information are introduced.\n- Section 2 (Rising Action): The series of events that build tension and develop the conflict. This part of the story usually includes obstacles, challenges, and complications that the characters must face.\n- Section 3 (Climax): The turning point or the highest point of intensity in the story. It is the moment where the conflict reaches its peak, and the outcome is uncertain. The climax often involves a significant decision, confrontation, or revelation.\n- Section 4 (Falling Action): The events that occur after the climax, where the tension starts to decrease. Loose ends are tied up, and the story begins to move towards its resolution.\n- Section 5 (Resolution): The final part of the story where the conflict is resolved, and the loose ends are tied up. It provides closure and answers any remaining questions. The resolution can be either positive or negative, depending on the outcome of the story. \n\n========\n\n",
-    "model": "gpt-3.5-turbo",
-    "temperature": 0.7,
-    "max_tokens": 250,
-    "output": 0,
-    "json_mode": 0,
-    "output_to": 7,
-    "behavior": "Introduction",
-    "hide_button": true
-  },
-  "Pick up where you left off": {
-    "prompt": "{{scratch}}\n\n========\n\nYour player had stepped away from the game, and now they're back. Provide a short recap of what's happened so far and the decision the protagonist must make. \n\n",
-    "model": "gpt-3.5-turbo-16k",
-    "temperature": 0.7,
-    "max_tokens": 1000,
-    "output": 1,
-    "json_mode": 0,
-    "output_to": 0,
-    "behavior": "Role Play 01",
-    "hide_button": false
-  },
-  "Introduction": {
-    "prompt": "{{scratch}}\n\nGiven the above, I would like you to write the opening paragraph for the story. Lean heavily into the genera expectations and end with a decision point for your protagonist. When you're done I'd like you to return your answer as a JSON object with two key-value pairs. The first key is \"opening\" and its value should be the opening text of the story. The second key is \"title\" and it contains an evocative and appropriate title for the type of story you want to tell. \n\n",
-    "model": "gpt-4-turbo-preview",
-    "temperature": 0.75,
-    "max_tokens": 500,
-    "output": 1,
-    "json_mode": 1,
-    "output_to": 4,
-    "behavior": "The story begins",
-    "hide_button": true
-  },
-  "The story begins": {
-    "prompt": "{{passThrough[\"title\"]}}\n\n{{passThrough[\"opening\"]}}\n\n",
-    "model": "gpt-3.5-turbo",
-    "temperature": 0.7,
-    "max_tokens": 250,
-    "output": 0,
-    "json_mode": 0,
-    "output_to": 2,
-    "behavior": "Role Play 01",
-    "hide_button": true
-  },
-  "Role Play 01": {
-    "prompt": "{{scratch}}\n\n========\n\nRemember, you are the game master for a table-top role-playing game. Above is the story so far. You are playing with one other player. They inhabit the role of the protagonist, making decisions for how they move through the world. You craft a story around their decisions, providing texture and playing the parts of all the other characters. The player who is playing the protagonist chooses to do the following.\n\n{{What do you want to do?*}}\n\n========\n\nTo determine if they are successful, start by assessing the likelihood of succeed for the above action. That is figure out how hard it will be for them to succeed in doing what they want to. Label this difficulty with one of the following labels: \n\n- Easy\n- Medium\n- Hard\n\nNow we're going to role a 20-sided dice to see if they are successful. Okay, the dice roll was {{d20}}.\n\nIf the difficulty was Easy, the roll ({{d20}}) has to be greater than or equal to 0 for them to succeed. \n\nIf the difficulty was Medium, the roll ({{d20}}) has to be greater than or equal to 5 for them to succeed. \n\nIf the difficulty was Medium, the roll ({{d20}}) has to be greater than or equal to 15 for them to succeed. \n\nIf they succeed you are to return a selection of prose continuing the story. Format your reply in JSON with the following key-value pairs:\n\n1. \"difficulty\" where the value is the label you applied above.\n2. \"difficulty_cutoff\" where the value is the numeric cutoff for the specified difficulty. \n3. \"roll\" where the value is the outcome of the above dice roll.\n4. \"success\" where the value is 1 if roll is greater than or equal to the difficulty_cutoff. \n5. \"narrative\" where the value is the prose you produce describing what happened. \n",
-    "model": "gpt-3.5-turbo-1106",
-    "temperature": 0.7,
-    "max_tokens": 1000,
-    "output": 1,
-    "json_mode": 1,
-    "output_to": 4,
-    "behavior": "move forward",
-    "hide_button": true
-  },
-  "move forward": {
-    "prompt": "You're helping write a short story. In a moment I'll give you the text so far, and I want you to add a beat, probably a paragraph or two, moving the story forward. Here's what you have so far: \n\n{{scratch}}\n\n{{passThrough[\"narrative\"]}}\n\n---\n\nNow give me the next beat of the story. Return your answer as a JSON object with two key-value pairs.\n\n1. \"last_beat\" where the value is the last beat of the story. That is ```{{passThrough[\"narrative\"]}}```\n2. \"next_beat\" where the the value is the text you would like to add to the story. \n\n\"next_beat\" should be no more than three paragraphs. It can go two ways: (1) the section continues and the beat stops when the protagonist needs to make a substantive decision about what to do next; or (2) you decide the section should end because it has done its job as described under the Story Arc. For a section to end, it must have run its course as specified by the Story Arc (e.g., the first section should involve Exposition and the last Resolution). If you think we're at the end of a section, \"next_beat\" should be the beginning of the next section and it should start with \"---\\n\\n,\" where \"\\n\\n\" is a double carriage return. This section break should be followed by an opening paragraph for the new section, setting things up with the section's goal in mind. If you're writing a new section, either change the setting or advance the time to keep things moving. If you are continuing the section, try to move things towards that section's goals as you understand them, but remember to stop when the protagonist needs to make a substantive decision about what to do next.\n\n",
-    "model": "gpt-3.5-turbo-1106",
-    "temperature": 0.7,
-    "max_tokens": 1000,
-    "output": 1,
-    "json_mode": 1,
-    "output_to": 4,
-    "behavior": "append 2",
-    "hide_button": true
-  },
-  "append 2": {
-    "prompt": "{{passThrough[\"last_beat\"]}}\n\n{{passThrough[\"next_beat\"]}}\n\n",
-    "model": "gpt-3.5-turbo",
-    "temperature": 0.7,
-    "max_tokens": 250,
-    "output": 0,
-    "json_mode": 0,
-    "output_to": 2,
-    "behavior": "Role Play 01",
-    "hide_button": true
-  },
-  "Download current story": {
-    "prompt": "{{scratch}}",
-    "model": "gpt-3.5-turbo",
-    "temperature": 0.7,
-    "max_tokens": 250,
-    "output": 0,
-    "json_mode": 0,
-    "output_to": 4,
-    "behavior": "file",
-    "hide_button": false
-  }
-}
   
   //localStorage.setItem('default_templates', JSON.stringify(default_prompts));
   
@@ -1528,7 +1426,7 @@ window.onbeforeunload = function () {
 <div class="content">
   <!-- START PAGE CONTENT -->
   <div id="page">
-    To check out an unwritten book, answer a few questions (6), then: read; reply; repeat. Remember, what you read is a reflection of what you and other authors have written, and where one ends a story is at least as important as where one begins.  
+    To check out an unwritten book, answer 6 questions, then: read; reply; repeat. <a href="about/">Remember</a>, what you read is a reflection of what you and other authors have written, and where one ends a story is at least as important as where one begins.  
   <hr/>
 
   <div id="main_wrapper">
