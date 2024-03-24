@@ -77,7 +77,7 @@
     To use The Library you need access to a <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank">large language model</a> (LLM). We're calling the credentials for this access your "library card."
   </p>
 
-  <h2>Use your own LLM Provider (Library Card)</h2>
+  <h2><a name="card" href="card/#card" class="anchor" alt="deep link to this section"></a>Use your own LLM Provider (Library Card)</h2>
 
   <p>
     If <i>API Key</i> below is empty, text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint and you can keep using the library even after the limit is hit. If you have no idea what a base or API key are, see the section below.  
@@ -92,7 +92,7 @@
     This site stores this information along with your current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:document.getElementById('api_base').value='';document.getElementById('api_key').value='';localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
   </p>
 
-  <h2>So you need an API key?</h2>
+  <h2><a name="key" href="card/#key" class="anchor" alt="deep link to this section"></a>So you need an API key?</h2>
 
   <p>
     You can access the Library with a number of LLM providers, as long as they use the same syntax as the OpenAI API. For example, you could download LM Studio and <a href="https://github.com/SuffolkLITLab/prompts?tab=readme-ov-file#using-lm-studio-with-lit-prompts" target="_blank">point to a local LLM</a> ensuring your stories stay on your computer. However, for simplicity's sake, we will only walk through how to set up OpenAI credentials here. 
