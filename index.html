@@ -1024,15 +1024,15 @@ function after_build(LLM_text,finish_reason="stop") {
 
   // Output location
   if (output_to==1) {
-    document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output copied to clipboard</div>";
+    //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output copied to clipboard</div>";
     copy_to_clipboard(LLM_text_collection);
   } else if (output_to==2) {
     //document.getElementById('scratch_pad').value += LLM_text_collection;
-    document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output appended to scratch pad</div>";
+    //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output appended to scratch pad</div>";
     localStorage.setItem('scratch_pad', localStorage.getItem('scratch_pad')+LLM_text); // used LLM_text, not LLM_text_collection because will have already been appended
   } else if (output_to==3) {
     //document.getElementById('scratch_pad').value = LLM_text_collection;
-    document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output replaced scratch pad</div>";
+    //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output replaced scratch pad</div>";
     localStorage.setItem('scratch_pad', LLM_text_collection);
   } else if (output_to==5) {
     //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output copied to clipboard</div>";
@@ -1427,7 +1427,7 @@ window.onbeforeunload = function () {
 <div class="content">
   <!-- START PAGE CONTENT -->
   <div id="page">
-    To check out an unwritten book, answer 6 questions, then: read; reply; repeat. <a href="about/">Remember</a>, what you read is a reflection of what you and other authors have written, and where one ends a story is at least as important as where one begins.  
+    To check out an unwritten book, answer 6 questions, then: read; reply; repeat. <a href="about/">Remember</a>, as a reader-author, what you read is a reflection of what you and others have written, and where one ends a story is at least as important as where one begins.  
   <hr/>
 
   <div id="main_wrapper">
