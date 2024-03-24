@@ -73,24 +73,22 @@
 <div id="page">
 
   <p>
-    To use the library you need access to a <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank">large language model</a> (LLM). We're calling the credentials for this access your "library card."
+    To use The Library you need access to a <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank">large language model</a> (LLM). We're calling the credentials for this access your "library card."
   </p>
 
   <h2>Use your own LLM Provider (Library Card)</h2>
 
   <p>
-    If <i>API Key</i> below is empty, the text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint and you can keep using the library even after the limit is hit. If you have no idea what a base or API key are, see the section below.  
+    If <i>API Key</i> below is empty, text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint and you can keep using the library even after the limit is hit. If you have no idea what a base or API key are, see the section below.  
   </p>
 
-  <p>
-    API Base: <input id="api_base" style="width:400px">
-  </p>
-  <p>
-   &nbsp;API Key: <input id="api_key" style="width:400px">
-  </p>
+  <table>
+    <tr><td width="1%">API&nbsp;Base:&nbsp;</td><td width="100%"><input id="api_base" style="width:100%"></td></tr>
+    <tr><td width="1%">API&nbsp;Key:&nbsp;</td><td width="100%"><input id="api_key" style="width:100%"></td></tr>
+  </table>
 
   <p>
-    This site stores this information along with your current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
+    This site stores this information along with your current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:document.getElementById('api_base').value='';document.getElementById('api_key').value='';localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
   </p>
 
   <h2>So you need an API key?</h2>

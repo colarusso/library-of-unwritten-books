@@ -932,7 +932,7 @@ async function openai_call(prompt_text) {
             json_mode = 2;
             openai_call(prompt_text);
           } else {
-            LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under <a herf="/card/">Library Card</a> to get new ones.`
+            LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under "Library Card" to get new ones.`
             output_to=0;
             behavior="stop"
             //LLM_text += "\n"+error            
@@ -944,7 +944,7 @@ async function openai_call(prompt_text) {
             document.getElementById('api_key').focus();
           }            
         } catch (error) {
-          LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under <a herf="/card/">Library Card</a> to get new ones.`
+          LLM_text = `There was an ERROR calling the LLM. Make sure you are using a valid endpoint and API Key. The credentials may have expired. Follow the directions under "Library Card" to get new ones.`
           output_to=0;
           behavior="stop"
           //LLM_text += "\n"+error            
