@@ -15,10 +15,15 @@ button {
 	-webkit-appearance:none;
 	opacity: 1;
 	border-radius: 3px;
+	font-size: 14px;
 	color:black;
 	border: 1px solid #7b7b7b;
 	padding: 3px;
 	background: rgb(211, 211, 211);
+}
+
+textarea {
+	font-size: 14px;
 }
 
 blockquote {
@@ -55,7 +60,7 @@ blockquote {
 }
 
 .title_bar{
-	padding: 25px 15px 20px 15px;
+	padding: 25px 15px 18px 15px;
 	border-bottom: 1px solid #787878;
 	text-transform: uppercase;
 	font-size: 38px;
@@ -69,6 +74,15 @@ blockquote {
 	padding:0 0px 0 0px;
 	width:100%;
 	text-align: left;
+}
+#subtitle {
+	width:100%;
+	font-size: 16px;
+	line-height: 18px;
+	color:#6c6b6b;
+	padding:10px 0px 0px 0px;
+	width:100%;
+	text-align: center;
 }
 
 a.title_home {
