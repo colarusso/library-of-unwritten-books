@@ -539,7 +539,6 @@ code{
 		height: 25px !important;
 		width: 25px !important;
 	}
-
 	.share_btn{
 		height:25px;
 	}	
@@ -551,7 +550,7 @@ code{
 		display: block;
 		width:100%;
 		text-align: center;
-		margin-top:35px;
+		margin-top:40px;
 	}
 	.title_bar{
 		padding-top: 8px;
