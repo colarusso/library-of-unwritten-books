@@ -1162,6 +1162,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   };
 
+  // Create button element
+  const button = document.createElement('button');
+  button.id = `open_scratch` // Set button id
+  button.textContent = "Upload story in progress"; // Set button text
+  button.dataset.choice = "Upload story in progress"; // Set data-choice attribute
+  button.style.width = '100%'; // Set styles
+  button.style.marginBottom = '5px';
+
+  // Add event listener to button
+  //button.addEventListener('mousedown', function() {
+  //  text_arry = getSelection(); selectedText = text_arry[0]; bodyText = text_arry[1];
+  //});
+  //button.addEventListener('click', function() {
+    //alert('upload')
+    // 'this' refers to the button clicked
+  //});
+
+  // Append button to button list in DOM
+  buttonList.appendChild(button);
+  
   start_spinner('thinking');
 
 });
@@ -1170,42 +1190,55 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
-//document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
         
-  //var open_scratch = document.getElementById('open_scratch');
-  //document.getElementById('open_scratch').addEventListener('click', function() {
-  //    if (confirm('This will replace the current scrtach pad contents with the file you upload. Choose "OK" to continue or "Cancel" to keep things as they are.') == true) {
-  //        document.getElementById('fileInput').click(); // Trigger file input
-  //    }
-  //});
-  //document.getElementById('fileInput').addEventListener('change', function(event) {
-  //    const file = event.target.files[0];
-  //    if (!file) {
-  //        return;
-  //    }
+  var open_scratch = document.getElementById('open_scratch');
+  document.getElementById('open_scratch').addEventListener('click', function() {
+      if (confirm('This will replace the current story with the file you upload. Note: the file you upload should be a text file with the same format you would find in a downloaded story. Choose "OK" to continue or "Cancel" to keep things as they are. ') == true) {
+          document.getElementById('fileInput').click(); // Trigger file input
+      }
+  });
+  document.getElementById('fileInput').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (!file) {
+          return;
+      }
 
-  //    const reader = new FileReader();
-  //    reader.onload = function(e) {
-  //        const contents = e.target.result;
-  //        try {
-  //            document.getElementById('scratch_pad').value = contents
-  //            localStorage.setItem('scratch_pad', contents);
-  //            //const json = JSON.parse(contents);
-  //            //updatePromptsFromJson(json); // Function to update prompts
-  //        } catch (error) {
-  //            console.error("Error reading file: ", error);
-  //            // Handle errors (invalid file, etc.)
-  //        }
-  //    };
-  //    reader.readAsText(file);
-  //});
+      const reader = new FileReader();
+      var error_code = 0
+
+      reader.onload = function(e) {
+          const contents = e.target.result;
+          if (contents.startsWith("You are the game master for a table-top role-playing game.")) {
+            try {
+                //document.getElementById('scratch_pad').value = contents
+                localStorage.setItem('scratch_pad', contents);
+                //const json = JSON.parse(contents);
+                //updatePromptsFromJson(json); // Function to update prompts
+            } catch (error) {
+                error_code = 1;
+                console.error("Error reading file: ", error);
+                // Handle errors (invalid file, etc.)
+            }
+          } else {
+            error_code = 1;
+          }
+          if (error_code==0) {
+            location.reload();
+          } else {
+            alert("Something went wrong. Make sure the file you're trying to upload is a properly formated story file (i.e., formated like one you would download).")
+          }
+      };
+
+      reader.readAsText(file);
+  });
 
   //var save_scratch = document.getElementById('save_scratch');
   //save_scratch.addEventListener('click', function() {
   //    saveTextAsFile(document.getElementById('scratch_pad').value,"scratch_pad.txt")
   //});
 
-//});
+});
 </script>
 <style>
 	* {
@@ -1478,9 +1511,13 @@ window.onbeforeunload = function () {
 
   </div>
   <!-- END PAGE CONTENT -->
+  <p style="text-align: center;display:none;">
+    FWIW, here are <a href="https://github.com/colarusso/library-of-unwritten-books" target="_blank">some stories</a> you can upload and carry forward.<br>
+  </p>
   <p style="text-align: center;">
     <span style="color:rgb(112, 112, 112)"><i><a href="about/" style="color:rgb(112, 112, 112)">LLMs power the library</a>. I prepaid for some usage, but when that runs out, folks will need a <a href="card/" style="color:rgb(112, 112, 112)">library card</a>.</i></span>
   </p>
+  <input type="file" id="fileInput" style="display: none;"/>
   <div class="footer">
     <span class="footer_links">
       <a href="./terms-et-al/">Terms &amp; Privacy</a> 
