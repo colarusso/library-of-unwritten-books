@@ -81,7 +81,7 @@
   <h2><a name="card" href="card/#card" class="anchor" alt="deep link to this section"></a>Use your own LLM Provider (Library Card)</h2>
 
   <p>
-    If <i>API Key</i> below is empty, text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint, and you can keep using the library even after the limit is hit. If you have no idea what a base or API key are, see the section below.  
+    If <i>API Key</i> below is empty, text of your stories is being passed to OpenAI over the site author's <a href="https://openai.com/policies/business-terms" target="_blank">business</a> account. The site author will turn off this access for all users once it hits a prepaid limit. If, however, you provide your own endpoint (API Base) and API key, your text will be passed to the LLM provider maintaining that endpoint, and you can keep using the library even after the limit is hit. <b>If you have no idea what a base or API key are, see the section below.</b>  
   </p>
 
   <table>
@@ -91,6 +91,10 @@
 
   <p>
     This site stores this information along with your current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:document.getElementById('api_base').value='';document.getElementById('api_key').value='';localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
+  </p>
+
+  <p>
+    <i>Note: If you are using your own API provider, you should consider that using different models than those the prompts were written for will produce different results.</i>
   </p>
 
   <h2><a name="key" href="card/#key" class="anchor" alt="deep link to this section"></a>So you need an API key?</h2>
