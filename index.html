@@ -1171,7 +1171,7 @@ document.addEventListener('DOMContentLoaded', function () {
       buttonList.appendChild(button);
     }
 
-    if (key=="Pick up where you left off"){
+    if ((key=="Pick up where you left off") && (localStorage.getItem("scratch_pad")!="")) {
       // Edit current story
       const button = document.createElement('button');
       button.id = `edit_scratch` // Set button id
