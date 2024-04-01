@@ -41,3 +41,8 @@
 		border:0px solid #ccc;
 		resize: none;
 	}
+
+	textarea {
+		font-size: 14px;
+		line-height: 20px;	
+	}
