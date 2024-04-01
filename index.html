@@ -1173,6 +1173,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   };
 
+  if (localStorage.getItem("scratch_pad")!=""){
+    // Edit current story
+    const button = document.createElement('button');
+    button.id = `edit_scratch` // Set button id
+    button.textContent = "Edit current story"; // Set button text
+    button.dataset.choice = "Edit current story"; // Set data-choice attribute
+    button.style.width = '100%'; // Set styles
+    button.style.marginBottom = '5px';
+    buttonList.appendChild(button);
+  }
+
   // Create button element
   const button = document.createElement('button');
   button.id = `open_scratch` // Set button id
@@ -1202,7 +1213,14 @@ window.onbeforeunload = function () {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-        
+
+  if (localStorage.getItem("scratch_pad")!="") {
+    var edit_scratch = document.getElementById('edit_scratch');
+    document.getElementById('edit_scratch').addEventListener('click', function() {
+        document.location.href = "edit/";
+    });
+  }
+ 
   var open_scratch = document.getElementById('open_scratch');
   document.getElementById('open_scratch').addEventListener('click', function() {
       if (confirm('This will replace the current story with the file you upload. Note: the file you upload should be a text file with the same format you would find in a downloaded story. Choose "OK" to continue or "Cancel" to keep things as they are. ') == true) {
