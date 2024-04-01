@@ -1086,7 +1086,7 @@ function after_build(LLM_text,finish_reason="stop") {
     calls=0;
     insert_restart();
     scroll2Q("text_"+bubble); 
-    saveTextAsFile(LLM_text_collection,"output.txt")
+    saveTextAsFile(LLM_text_collection,"my_story.txt")
 
   } else if (behavior=="pass") {
     // passThrough
@@ -1171,18 +1171,20 @@ document.addEventListener('DOMContentLoaded', function () {
       buttonList.appendChild(button);
     }
 
+    if (key=="Pick up where you left off"){
+      // Edit current story
+      const button = document.createElement('button');
+      button.id = `edit_scratch` // Set button id
+      button.textContent = "Edit current story inplace"; // Set button text
+      button.dataset.choice = "Edit current story inplace"; // Set data-choice attribute
+      button.style.width = '100%'; // Set styles
+      button.style.marginBottom = '5px';
+      buttonList.appendChild(button);
+    }
+
   };
 
-  if (localStorage.getItem("scratch_pad")!=""){
-    // Edit current story
-    const button = document.createElement('button');
-    button.id = `edit_scratch` // Set button id
-    button.textContent = "Edit current story inplace"; // Set button text
-    button.dataset.choice = "Edit current story inplace"; // Set data-choice attribute
-    button.style.width = '100%'; // Set styles
-    button.style.marginBottom = '5px';
-    buttonList.appendChild(button);
-  }
+
 
   // Create button element
   const button = document.createElement('button');
