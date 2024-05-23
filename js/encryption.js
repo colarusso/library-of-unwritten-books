@@ -1,6 +1,8 @@
-  // adapted from https://raw.githubusercontent.com/bradyjoslin/webcrypto-example/master/script.js
   
   // for large strings, use this from https://stackoverflow.com/a/49124600
+  
+  
+  // adapted from https://raw.githubusercontent.com/bradyjoslin/webcrypto-example/master/script.js
   const buff_to_base64 = (buff) => btoa(
   new Uint8Array(buff).reduce(
       (data, byte) => data + String.fromCharCode(byte), ''
