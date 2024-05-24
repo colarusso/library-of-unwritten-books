@@ -1,0 +1,112 @@
+{
+  "Read-write a new story": {
+    "prompt": "Produce a JSON object where the key is \"genre\" and the value is ```{{6. What genre does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}```",
+    "model": "gpt-3.5-turbo",
+    "temperature": 0,
+    "max_tokens": 500,
+    "output": 1,
+    "json_mode": 1,
+    "output_to": 4,
+    "behavior": "Frame",
+    "hide_button": false
+  },
+  "Frame": {
+    "prompt": "You are the game master for a table-top role-playing game. You are playing with one other player. They will inhabit the role of the protagonist, making decisions for how they move through the world. You will craft a story around their decisions, providing texture and playing the parts of all the other characters. First, I'm going to give you some context so you understand the narrative expectations. \n\n========\n\nSetting and genre: \n\n- Your story telling should adhere to the following genre expectations: {{6. What genre does this story belong to (e.g., sci-fi, realistic fiction, romance)?}}\n- Your story will start at the following place: {{5. Where does your story take place?}}\n- Your story is set at the following time: {{4. When does your story take place?}}\n\n========\n\nThe Protagonist:\n\nEarlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.\n\n- name: {{3. What is your character's name?}}\n- additional notes: {{2. Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)? Keep it brief, and it's okay to say, \"No.\"}}\n\n========\n\nAdditional Notes:\n\nYou also asked them if there was anything else would like you to incorporate into the story. This is what they said: \n\n{{1. Is there anything else you would like me to incorporate into the story? Special \"notes\" you have for this story? Please, keep it short, and it's okay to say, \"No.\"}}\n\n========\n\nStory Arc:\n\nAs the story unfolds you should help shape it to follow this basic structure: \n\n- Section 1 (Exposition): The beginning of the story where the characters, setting, and background information are introduced.\n- Section 2 (Rising Action): The series of events that build tension and develop the conflict. This part of the story usually includes obstacles, challenges, and complications that the characters must face.\n- Section 3 (Climax): The turning point or the highest point of intensity in the story. It is the moment where the conflict reaches its peak, and the outcome is uncertain. The climax often involves a significant decision, confrontation, or revelation.\n- Section 4 (Falling Action): The events that occur after the climax, where the tension starts to decrease. Loose ends are tied up, and the story begins to move towards its resolution.\n- Section 5 (Resolution): The final part of the story where the conflict is resolved, and the loose ends are tied up. It provides closure and answers any remaining questions. The resolution can be either positive or negative, depending on the outcome of the story. \n\n========\n\nStyle:\n\nUnless the other player has said otherwise, your prose should be high quality like that you would find in a published book with plenty of dialogue. You avoid repeating yourself and try for a coherent story. You also favor describing events over exposition. You follow the writing advice, \"show don't tell.\" \n\n========\n\n\n",
+    "model": "",
+    "temperature": 0.7,
+    "max_tokens": 250,
+    "output": 0,
+    "json_mode": 0,
+    "output_to": 7,
+    "behavior": "Introduction",
+    "hide_button": true
+  },
+  "Pick up where you left off": {
+    "prompt": "{{scratch}}\n\n========\n\nAbove is a story in progress. Provide a short recap of what's happened so far as if catching the protagonist up on their actions. Be sure to provide enough detail so we know where we left the protagonist at the end of the story so far. Do, however, keep it short. Write no more than three paragraphs. \n\n",
+    "model": "gpt-4o",
+    "temperature": 0.7,
+    "max_tokens": 1000,
+    "output": 1,
+    "json_mode": 0,
+    "output_to": 0,
+    "behavior": "Role Play 01",
+    "hide_button": false
+  },
+  "Introduction": {
+    "prompt": "{{scratch}}\n\nGiven the above, write the first two or three paragraphs for the story. Lean heavily into genre expectations. The text should move the story forward and set the stage for the protagonist to take action. The prose should read like that of a novel with plenty of depth and some dialogue. When you're done, I'd like you to return your answer as a JSON object with two key-value pairs. The first key is \"opening\" and its value should be the opening text of the story. The second key is \"title\" and it contains an evocative and appropriate title for the type of story you want to tell. \n\n",
+    "model": "gpt-4o",
+    "temperature": 0.9,
+    "max_tokens": 1000,
+    "output": 1,
+    "json_mode": 1,
+    "output_to": 4,
+    "behavior": "The story begins",
+    "hide_button": true
+  },
+  "The story begins": {
+    "prompt": "{{passThrough[\"title\"]}}\n\n{{passThrough[\"opening\"]}}\n\n",
+    "model": "",
+    "temperature": 0.7,
+    "max_tokens": 250,
+    "output": 0,
+    "json_mode": 0,
+    "output_to": 2,
+    "behavior": "Role Play 01",
+    "hide_button": true
+  },
+  "Role Play 01": {
+    "prompt": "{{scratch}}\n\n========\n\nRemember, you are the game master for a table-top role-playing game. Above is the story so far. You are playing with one other player. They inhabit the role of the protagonist, making decisions for how they move through the world. You craft a story around their decisions, providing texture and playing the parts of all the other characters, speaking and acting for them as needed. You ask the player who is playing the protagonist what they want to do next, and this is their answer:\n\n{{What do you want to do?*}}\n\n========\n\nTo determine if they are successful, start by assessing the likelihood of success for the above action given what you know about the story so far and the relevant genre conventions. Also, consider what you know of the character's skills and motivations and how those might effect the outcome. That is, figure out how hard it will be for the protagonist to do what they want to. Label this difficulty with one of the following labels: \n\n- Very Easy\n- Easy\n- Medium\n- Hard\n\nNow we're going to role a 20-sided dice to see if they are successful. Okay, the dice roll was {{d20}}.\n\nIf the difficulty was Very Easy, the roll ({{d20}}) has to be greater than or equal to 0 for them to succeed. \n\nIf the difficulty was Easy, the roll ({{d20}}) has to be greater than or equal to 2 for them to succeed. \n\nIf the difficulty was Medium, the roll ({{d20}}) has to be greater than or equal to 6 for them to succeed. \n\nIf the difficulty was Hard, the roll ({{d20}}) has to be greater than or equal to 12 for them to succeed. \n\nReturn a selection of prose, 1 to 2 paragraphs, explaining what happened (i.e., describing what the protagonist did and their success or failure). Be sure to include dialogue when appropriate. The prose should flow naturally from the story so far (text above). Assume that the reader does not know what the player said the protagonist wanted to do. You should include details over generalities. Instead of explaining that something occurred, describe each of the events and actions that took place. Show don't tell! Format your reply in JSON with the following key-value pairs:\n\n1. key=\"difficulty\" and the value is the label you applied above.\n2. key=\"difficulty_cutoff\" and the value is the numeric cutoff for the specified difficulty. \n3. key=\"roll\" and the value is the outcome of the above dice roll.\n4. key=\"success\" and the value is 1 if roll is greater than or equal to the difficulty_cutoff. \n5. key=\"narrative\" and the value is the prose you produce describing what happened.\n\nAnd again, remember to show with your words, don't tell. Walk through events and actions one by one in great detail. Also, if this event seems too much like what has come before, take it in a different direction. Avoid repeating phrases that already appear in the story. Don't hide information in the protagonist's mind. The reader should know everything they do and in detail. \n",
+    "model": "gpt-4o",
+    "temperature": 0.8,
+    "max_tokens": 1000,
+    "output": 1,
+    "json_mode": 1,
+    "output_to": 4,
+    "behavior": "move forward",
+    "hide_button": true
+  },
+  "move forward": {
+    "prompt": "{{passThrough[\"narrative\"]}}\n\n",
+    "model": "",
+    "temperature": 0.7,
+    "max_tokens": 250,
+    "output": 0,
+    "json_mode": 0,
+    "output_to": 2,
+    "behavior": "move forward 2",
+    "hide_button": true
+  },
+  "move forward 2": {
+    "prompt": "You're helping write a short story. In a moment I'll give you the text so far, and I want you to add a beat, probably about two or three paragraphs worth, more if it includes dialogue. The text should move the story forward and set the stage for the protagonist to take action. Here's what you have so far: \n\n{{scratch}}\n\n---\n\nWrite the next beat of the story. Be sure to include dialogue when appropriate, and don't try to cram in a lot of exposition, opt instead for setting the protagonist up to take action. Show don't tell. Return your answer as a JSON object where the key is \"next_beat\" and the value what you would like to add to the story. Pay particular attention to the story so far, making sue the next beat (this bit) makes sense. \n\n\"next_beat\" should be no more than three paragraphs. It can go two ways: \n\n(1) the section continues and the beat stops after setting the stage for the protagonist to act; OR \n\n(2) you decide the section should end because it has done its job as described under Story Arc above. For a section to end, it must have run its course as specified by the Story Arc (e.g., the first section should involve Exposition and the last Resolution). If you think we're at the end of a section, \"next_beat\" should be the beginning of the next section and it should start with \"---\\n\\n,\" where \"\\n\\n\" is a double carriage return. This section break should be followed by an opening paragraph for the new section, setting things up with that section's goal in mind. \n\nIf you're writing a new section (2 above), either change the setting or advance the time to keep things moving. \n\nIf you are continuing the section (1 above), move things towards that section's goals as you understand them, but do NOT jump over any time, place the action directly following the last beat.\n\nEither way, you should move the story forward adding detail and plot points. Make it count. No vague flowery fluff, and make sure your prose follows naturally from the story so far, as described above. Avoid repeating phrases that already appear in the story, and don't use the \"un-Reveal trope\" (i.e., if the reader is promised a secret or introduced to some cryptic plot element, cut to the chase, and reveal the secret or explain the meaning to the reader right away). If you need more space to do this, add a paragraph. Don't hide information in the protagonist's mind. The reader should know everything they do and in detail. This doesn't mean you have to tell us everything they're feeling, only what they know.\n",
+    "model": "gpt-4o",
+    "temperature": 0.8,
+    "max_tokens": 1000,
+    "output": 1,
+    "json_mode": 1,
+    "output_to": 4,
+    "behavior": "append 2",
+    "hide_button": true
+  },
+  "append 2": {
+    "prompt": "{{passThrough[\"next_beat\"]}}\n\n",
+    "model": "",
+    "temperature": 0.7,
+    "max_tokens": 250,
+    "output": 0,
+    "json_mode": 0,
+    "output_to": 2,
+    "behavior": "Role Play 01",
+    "hide_button": true
+  },
+  "Download current story": {
+    "prompt": "{{scratch}}",
+    "model": "",
+    "temperature": 0.7,
+    "max_tokens": 250,
+    "output": 0,
+    "json_mode": 0,
+    "output_to": 4,
+    "behavior": "file",
+    "hide_button": false
+  }
+}
