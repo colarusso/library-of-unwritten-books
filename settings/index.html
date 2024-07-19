@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<HTML><HEAD>
+
+  <!-- Set base for this page equal to domain root -->
+  <base href="../">
+
+<!-- Page-specific metadata -->
+<title>Tips | The Library of Unwritten Books</title>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Settings | The Library of Unwritten Books"/>
+<meta property="og:description" content="Like most things in life, what you get out of your unwritten book depends on what you put in. If you respond passively, providing short replies or taking only the road presented, your journey will stay safe and predictable. I for one find this unsatisfying. It may also lead you to believe the Library's stories aren't that good. To which I would respond, &quot;You are a reader-author, act like it!&quot; Only by embracing your role as an author will the stories be anything more than average. That's because the machine-generated text is a string of the next most-plausible words. How does it decide what's &quot;most plausible?&quot; Well, it actually kind of averages all the texts in its training data. By default, these stories are average. They also tend to lack strong plotting. Mostly, it's one thing after another, each scene shaped by what came before and genre conventions. Given these realities, I've found the following two mindsets to work best when read-writing, those of goal seekers and zeitgeist explorers. Both recognize the need to actively push at the boundaries of the world in which they find themselves.  "/>
+<meta property="og:image" content="http://www.davidcolarusso.com/images/50-days/alice_tea_party.jpg"/>
+<meta property="og:image:width" content="862" />
+<meta property="og:image:height" content="658" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9L150R8REY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9L150R8REY');
+</script>
+
+<!-- Metadata for mobile -->
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="no" />
+<link rel="apple-touch-icon" href="images/home_icon.png"/>
+
+<!-- JS & style -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=2024-05-22">
+<script src="js/functions.js?v=2024-05-22"></script>
+
+<!-- AddToAny -->
+<script>
+  var a2a_config = a2a_config || {};
+  a2a_config.num_services = 10;
+  a2a_config.show_title = 1;
+</script>
+<script async src="https://static.addtoany.com/menu/page.js" onerror="share.innerHTML='';"></script>
+
+</HEAD>
+<BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0">
+
+<!-- Message Banner -->
+<div id="msg_bar" style="display:none;"></div>
+
+<!-- Title and share -->
+<div class="title_bar">
+  <div class="home">
+    <a href="./" tabindex="1"><img src="images/home.png" class="home_btn"></a>
+  </div>  
+  <div class="settings">
+    <a href="settings/"><img src="images/settings.png" class="settings_btn"></a>
+  </div>
+  <div id="share">
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://libraryofunwrittenbooks.org/about/" data-a2a-title="About | The Library of Unwritten Books">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+  </div>
+  <span id="title"><a href="./" class="title_home">The Library of Unwritten Books</a></span>
+  <div id="subtitle">More stories than stars in the sky</div>
+</div>
+
+<!-- Menu -->
+<div class="menu_bar">
+  <a href="." class="menu_item">Home</a>
+  <a href="about/" class="menu_item">About</a>
+  <a href="tips/" class="menu_item">Tips</a>
+  <a href="card/" class="menu_item">Library Card</a>
+</div>
+
+<div class="content">
+<!-- START PAGE CONTENT -->
+<div id="page">
+
+  <p>If you're looking for LLM credentials, check out the discussion of <a href="card/">Library Cards</a>.</p>
+
+  <h2><a name="tts" href="settings/#tts" class="anchor" alt="deep link to this section"></a>Text-to-Speech</h2>
+
+  <div>Reading Speed: <i id="wpm_n">200</i> words/minute</div>
+  <input type="range" min="0" max="800" value="200" class="slider" id="wpm" onInput="document.getElementById('wpm_n').innerHTML = this.value;localStorage.setItem('wpm', this.value);">
+  
+  <h2><a name="storage" href="settings/#storage" class="anchor" alt="deep link to this section"></a>LocalStorgae</h2>
+
+  <p>
+    This site stores all of your information, inlcuding your <a href="card/">LLM credentials</a> and current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
+  </p>
+
+</div>
+
+<!-- END PAGE CONTENT -->
+<div class="footer">
+  <span class="footer_links">
+    <a href="./terms-et-al/">Terms &amp; Privacy</a> 
+    | <a href="https://github.com/colarusso/library-of-unwritten-books/issues" target="_blank">Feedback</a> 
+    | <a href="https://github.com/colarusso/library-of-unwritten-books" target="_blank">GitHub</a>
+  </span>
+  <span class="byline">Site by <a href="https://mastodon.social/@Colarusso" target="_blank">David Colarusso</a></span>
+</div>
+</div>
+<script>
+  const wordsPerMinute = localStorage.getItem('wpm') || document.getElementById('wpm').value; // Average reading speed
+  document.getElementById('wpm').value = wordsPerMinute;
+  document.getElementById('wpm_n').innerHTML = wordsPerMinute;
+  localStorage.setItem('wpm',wordsPerMinute);
+</script>
+
+</BODY></HTML>
+
+
+
+

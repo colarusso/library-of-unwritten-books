@@ -787,7 +787,8 @@ function build_prompt() {
             });
             //document.getElementById('user_input').focus();
             bubble+=1;
-            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"`)' class='speak'>🎧</a><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
+            tmp_text = question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","");
+            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
             scroll2Q("text_"+bubble);
             document.getElementById("user_input").addEventListener("keydown", submitOnEnter);
           }, 300);        
@@ -799,7 +800,8 @@ function build_prompt() {
             });
           //document.getElementById('user_input').focus();
           bubble+=1;
-          document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"`)' class='speak'>🎧</a><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
+          tmp_text = question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","");
+          document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
           scroll2Q("text_"+bubble);
           document.getElementById("user_input").addEventListener("keydown", submitOnEnter);
         }
@@ -1498,9 +1500,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="home">
       <a href="./" tabindex="1"><img src="images/home.png" class="home_btn"></a>
     </div>  
+    <div class="settings">
+      <a href="settings/"><img src="images/settings.png" class="settings_btn"></a>
+    </div>
     <div id="share">
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://libraryofunwrittenbooks.org/" data-a2a-title="The Library of Unwritten Books">
-          <a class="a2a_button_mastodon"></a>
           <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
         </div>
     </div>

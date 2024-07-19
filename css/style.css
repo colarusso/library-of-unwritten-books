@@ -60,7 +60,7 @@ blockquote {
 }
 
 .title_bar{
-	padding: 25px 15px 18px 15px;
+	padding: 15px 10px 18px 10px;
 	border-bottom: 1px solid #787878;
 	text-transform: uppercase;
 	font-size: 38px;
@@ -101,6 +101,16 @@ a.title_home {
 	height: 35px;
 }
 
+.settings {
+	float:right;
+	margin-left:5px;
+	text-align:left;
+}
+
+.settings_btn {
+	height: 32px;
+}
+
 .a2a_svg{
 	height: 35px;
 	width: 35px;
@@ -118,7 +128,7 @@ a.title_home {
 
 #share {
 	float:right;
-	width:72px;
+	width:36px;
 	height:35px;
 	margin-left:25px;
 	text-align:right;
@@ -466,6 +476,10 @@ code{
   box-sizing: border-box;
 }
 
+.slider{
+	width:100%;
+}
+
 .footer {
 	margin:35px 0;
 	text-align:right;
@@ -530,9 +544,12 @@ code{
 		width:58px;
 	}
 	#share{
-		width: 58px;
+		width: 29px;
 	}
 	.home_btn {
+		height:25px;
+	}
+	.settings_btn {
 		height:25px;
 	}
 	.a2a_svg{
@@ -553,7 +570,7 @@ code{
 		margin-top:40px;
 	}
 	.title_bar{
-		padding-top: 8px;
+		padding: 8px;
 		padding-bottom: 15px;
 	}
 
