@@ -291,6 +291,7 @@ var behavior = "";
 var passThrough = "";
 var bubble = 0;
 var calls = 0;
+var visible_calls = 0;
 
 popup_CSS = `* {
   box-sizing: border-box;
@@ -564,6 +565,7 @@ function choose_prompt(choice) {
   if (calls>=20) {
     if (confirm(`Are you in a loop? You've made 20 prompt calls without human interaction. Choose "OK" to continue or "Cancel" to stop here.`) == true) {
       calls = 0;
+      visible_calls = 0;
     } else {
       insert_restart();
     }
@@ -734,7 +736,7 @@ function choose_prompt(choice) {
 function scroll2Q(id) {
   document.getElementById('save_transcript').style.display='block';
 
-  if (bubble>0) {
+  if (bubble>0 & visible_calls==0) {
     var top = document.getElementById(id).offsetTop; //Getting Y of target element
     console.log("Jump to Y for ("+id+"): "+top);
     //adapted from https://github.com/Yappli/smooth-scroll
@@ -776,7 +778,10 @@ function build_prompt() {
           setTimeout(() => {
             document.getElementById('thinking_box').style.display='none';
             document.getElementById('text_input').style.display='block';
-            document.getElementById('user_input').focus();
+            document.getElementById('user_input').focus({
+              preventScroll:true
+            });
+            //document.getElementById('user_input').focus();
             bubble+=1;
             document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
             scroll2Q("text_"+bubble);
@@ -785,7 +790,10 @@ function build_prompt() {
         } else {
           document.getElementById('thinking_box').style.display='none';
           document.getElementById('text_input').style.display='block';
-          document.getElementById('user_input').focus();
+          document.getElementById('user_input').focus({
+              preventScroll:true
+            });
+          //document.getElementById('user_input').focus();
           bubble+=1;
           document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
           scroll2Q("text_"+bubble);
@@ -825,6 +833,7 @@ function submit_text() {
   if (answer.length>0) {
     console.log("Sending text...")
     calls=0;
+    visible_calls = 0;
     document.getElementById('text_input').style.display='none'
     document.getElementById('thinking_box').style.display='block';
     bubble+=1;
@@ -872,6 +881,7 @@ function submit_chat_text() {
   if (answer.length>0) {
     console.log("Sending text...")
     calls=0;
+    visible_calls=0;
     document.getElementById('chat_text_input').style.display='none'
     document.getElementById('thinking_box').style.display='block';
     bubble+=1;
@@ -897,6 +907,7 @@ function submitChatOnEnter(event) {
 function submit_continue() {
   console.log("Sending continue request...")
   calls=0;
+  visible_calls=0;
   document.getElementById('continue_gen').style.display='none';
   document.getElementById('thinking_box').style.display='block';
   openai_call("You got cutoff. Pickup where you left off and continue.")  
@@ -1017,6 +1028,7 @@ function after_build(LLM_text,finish_reason="stop") {
     bubble+=1;
     document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text' style='white-space: pre-wrap;'>"+LLM_text_formatted.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
     scroll2Q("text_"+bubble);
+    visible_calls+=1;
   }
 
   // Check on json formatting
@@ -1063,12 +1075,14 @@ function after_build(LLM_text,finish_reason="stop") {
   if (finish_reason=="length"){
     document.getElementById('continue_gen').style.display='block';
     calls=0;
+    visible_calls=0;
     scroll2Q("text_"+bubble); 
 
   } else if (behavior=="stop") {
     // End
     //document.getElementById('output_window').innerHTML += "<div class='msg_text'>end</div>";
     calls=0;
+    visible_calls=0;
     insert_restart();
     scroll2Q("text_"+bubble); 
 
@@ -1078,12 +1092,14 @@ function after_build(LLM_text,finish_reason="stop") {
     document.getElementById('chat_text_input').style.display='block';
     document.getElementById('chat_user_input').focus();
     calls=0;
+    visible_calls=0;
     scroll2Q("text_"+bubble); 
 
   } else if (behavior=="file") {
     // Save to file
     document.getElementById('output_window').innerHTML += "<div class='msg_text'>triggered save to file</div>";
     calls=0;
+    visible_calls=0;
     insert_restart();
     scroll2Q("text_"+bubble); 
     saveTextAsFile(LLM_text_collection,"my_story.txt")
@@ -1097,6 +1113,7 @@ function after_build(LLM_text,finish_reason="stop") {
         alert('No matching prompt found for "'+passThrough["next"]+'." Defaulting to FULL STOP')
         //document.getElementById('output_window').innerHTML += "<div class='msg_text'>end</div>";          
         calls=0;
+        visible_calls=0;
         insert_restart();
         scroll2Q("text_"+bubble); 
       }
@@ -1104,6 +1121,7 @@ function after_build(LLM_text,finish_reason="stop") {
       alert('No value found for passThrough["next"] defaulting to FULL STOP')
       //document.getElementById('output_window').innerHTML += "<div class='msg_text'>end</div>";
       calls=0;
+      visible_calls=0;
       insert_restart();
       scroll2Q("text_"+bubble); 
     }
