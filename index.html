@@ -862,8 +862,8 @@ function submit_text() {
 }
 
 function random_text(){
-  last_bubble = document.getElementById("text_"+bubble).innerText.replaceAll("🎧\n","");
-  if (last_bubble=="6. What genre does this story belong to (e.g., sci-fi, realistic fiction, romance)?"){
+  last_bubble = document.getElementById("text_"+bubble).innerText;
+  if (last_bubble.match("6. What genre does this story belong to (e.g., sci-fi, realistic fiction, romance)?")){
     possible = [
       "Adventure",
       "Children's",
@@ -927,7 +927,7 @@ function random_text(){
     ];
 
     output = possible[Math.floor(Math.random() * possible.length)];
-  } else if (last_bubble=="5. Where does your story take place?") {
+  } else if (last_bubble.match("5. Where does your story take place?")) {
     possible = [
       "Abandoned Castle",
       "Ancient Ruins",
@@ -1076,7 +1076,7 @@ function random_text(){
       "Yoga Retreat"
     ];
     output = possible[Math.floor(Math.random() * possible.length)];
-  } else if (last_bubble=="4. When does your story take place?") {
+  } else if (last_bubble.match("4. When does your story take place?")) {
     possible = [
       "Early morning",
       "Late evening",
@@ -1175,7 +1175,7 @@ function random_text(){
     ];
 
     output = possible[Math.floor(Math.random() * possible.length)];
-  } else if (last_bubble=="3. What is your character's name?") {
+  } else if (last_bubble.match("3. What is your character's name?")) {
     possible = [
       "Aeliana Voss",
       "Branwyn Stone",
@@ -1361,7 +1361,7 @@ function random_text(){
     ];
 
     output = possible[Math.floor(Math.random() * possible.length)];
-  } else if (last_bubble==`2. Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)? Keep it brief, and it's okay to say, "No."`) {
+  } else if (last_bubble.match("2. Anything else I should know that's important to your character (e.g., age, gender, sexual orientation, physical appearance, background)?")) {
     possible = [
       "No",
       "Age: 25, Appearance: Tall with dark hair, Background: Former soldier.",
@@ -1519,7 +1519,7 @@ function random_text(){
     ];
 
     output = possible[Math.floor(Math.random() * possible.length)];
-  } else if (last_bubble==`1. Is there anything else you would like me to incorporate into the story? Special "notes" you have for this story? Please, keep it short, and it's okay to say, "No."`) {
+  } else if (last_bubble.match("1. Is there anything else you would like me to incorporate into the story")) {
     possible = [
       "Incorporate a strong theme of friendship.",
       "The protagonist is driven by a desire for revenge.",
@@ -1741,7 +1741,6 @@ function random_text(){
       "Take a moment to breathe.",
       "Follow my dreams."
     ];
-
     output = possible[Math.floor(Math.random() * possible.length)];
   }
 
