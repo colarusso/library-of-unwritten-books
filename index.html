@@ -29,6 +29,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/style.css?v=2024-05-22">
   <script src="js/functions.js?v=2024-05-22"></script>
+  <script src="js/tts.js?v=2024-05-22"></script>
 
   <!-- AddToAny -->
   <script>
@@ -346,9 +347,12 @@ body {
   color: white;
   border-radius:8px;
   margin: 0px 0 15px 0;
-  max-width:100%;
-  margin-right:20%;
+  max-width:80%;
   padding:15px;
+}
+
+.speak {
+  float:right;
 }
 
 code {
@@ -783,7 +787,7 @@ function build_prompt() {
             });
             //document.getElementById('user_input').focus();
             bubble+=1;
-            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
+            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"`)' class='speak'>🎧</a><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
             scroll2Q("text_"+bubble);
             document.getElementById("user_input").addEventListener("keydown", submitOnEnter);
           }, 300);        
@@ -795,7 +799,7 @@ function build_prompt() {
             });
           //document.getElementById('user_input').focus();
           bubble+=1;
-          document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
+          document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"`)' class='speak'>🎧</a><div class='output_text'>"+question_.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
           scroll2Q("text_"+bubble);
           document.getElementById("user_input").addEventListener("keydown", submitOnEnter);
         }
@@ -1026,7 +1030,7 @@ function after_build(LLM_text,finish_reason="stop") {
   // If not hidden
   if (output_to<4) {
     bubble+=1;
-    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='output_text' style='white-space: pre-wrap;'>"+LLM_text_formatted.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
+    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+LLM_text_formatted.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"`)' class='speak'>🎧</a><div class='output_text' style='white-space: pre-wrap;'>"+LLM_text_formatted.replaceAll("\n\n---\n\n","\n\n~\n\n").replaceAll("---\n\n","")+"</div></div>";
     scroll2Q("text_"+bubble);
     visible_calls+=1;
   }
@@ -1340,10 +1344,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		color: white;
 		border-radius:8px;
 		margin: 0px 0 15px 0;
-		max-width:100%;
-		margin-right:20%;
+		max-width:80%;
 		padding:15px;
 	}
+
+  a.speak {
+    float:right;
+    padding: 0px 3px 0 0;
+    text-decoration: none;
+  }
 
 	code {
 		background:#2c3e8e;
