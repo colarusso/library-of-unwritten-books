@@ -25,7 +25,7 @@
 <!-- Metadata for mobile -->
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-<meta name="apple-mobile-web-app-capable" content="no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="apple-touch-icon" href="images/home_icon.png"/>
 
 <!-- JS & style -->
@@ -80,13 +80,13 @@
 
   <h2><a name="tts" href="settings/#tts" class="anchor" alt="deep link to this section"></a>Text-to-Speech</h2>
 
-  <div>Reading Speed: <i id="wpm_n">200</i> words/minute</div>
-  <input type="range" min="0" max="800" value="200" class="slider" id="wpm" onInput="document.getElementById('wpm_n').innerHTML = this.value;localStorage.setItem('wpm', this.value);">
+  <div>Reading Speed: <i id="wpm_n">175</i> words/minute</div>
+  <input type="range" min="0" max="800" value="175" class="slider" id="wpm" onInput="document.getElementById('wpm_n').innerHTML = this.value;localStorage.setItem('wpm', this.value);">
   
   <h2><a name="storage" href="settings/#storage" class="anchor" alt="deep link to this section"></a>LocalStorgae</h2>
 
   <p>
-    This site stores all of your information, inlcuding your <a href="card/">LLM credentials</a> and current story in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();alert('localStorage cleared!')">remove my saved data</a>.
+    This site stores information, like your <a href="card/">LLM credentials</a> and current story, in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();document.getElementById('wpm').value = 175;document.getElementById('wpm_n').innerHTML = 175;alert('localStorage cleared!')">remove my saved data</a>.
   </p>
 
 </div>
