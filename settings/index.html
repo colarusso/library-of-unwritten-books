@@ -86,7 +86,7 @@
   <h2><a name="storage" href="settings/#storage" class="anchor" alt="deep link to this section"></a>LocalStorgae</h2>
 
   <p>
-    This site stores information, like your <a href="card/">LLM credentials</a> and current story, in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();document.getElementById('wpm').value = 175;document.getElementById('wpm_n').innerHTML = 175;alert('localStorage cleared!')">remove my saved data</a>.
+    This site stores information, like your <a href="card/">LLM credentials</a> and current story, in your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();document.getElementById('wpm').value = 175;document.getElementById('wpm_n').innerHTML = 175;localStorage.setItem('wpm',175);alert('localStorage cleared!')">remove my saved data</a>.
   </p>
 
 </div>
