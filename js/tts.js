@@ -1,4 +1,5 @@
 const wordsPerMinute = localStorage.getItem('wpm') || 175;
+localStorage.setItem('wpm',wordsPerMinute);
 
 var voices = window.speechSynthesis.getVoices();
 
