@@ -390,7 +390,7 @@ function start_spinner(target_id) {
     radius: 10, // The radius of the inner circle
     corners: 1, // Corner roundness (0..1)
     rotate: 0, // The rotation offset
-    color: '#000', // #rgb or #rrggbb
+    color: '#909090', // #rgb or #rrggbb
     speed: 1, // Rounds per second
     trail: 60, // Afterglow percentage
     shadow: false, // Whether to render a shadow
@@ -1369,8 +1369,7 @@ function random_text(){
       "Age: 26, Appearance: Medium height, black hair, Background: Teacher.",
       "Age: 32, Appearance: Blond, green eyes, Background: Nurse.",
       "Age: 23, Appearance: Short with curly hair, Background: Graphic designer.",
-      "Age: 30, Appearance: Average build, Background: Policeman.",
-      "Age: 28, Appearance: Athletic with tattoos, Background: MMA fighter.",
+      "Age: 30, Appearance: Average build, Background: Social Worker.",
       "Age: 35, Appearance: Tall with a beard, Background: Writer.",
       "Age: 22, Appearance: Petite with piercings, Background: Dancer.",
       "Age: 29, Appearance: Muscular with blue eyes, Background: Soldier.",
@@ -1380,7 +1379,7 @@ function random_text(){
       "Age: 24, Appearance: Slender with glasses, Background: Student.",
       "Age: 40, Appearance: Curly hair, average build, Background: Engineer.",
       "Age: 34, Appearance: Tall with tattoos, Background: Musician.",
-      "Age: 25, Appearance: Athletic, short hair, Background: Police officer.",
+      "Age: 25, Appearance: Athletic, short hair, Background: Public Defender.",
       "Age: 28, Appearance: Average height, blonde, Background: Actor.",
       "Age: 32, Appearance: Tall with green eyes, Background: Lawyer.",
       "Age: 23, Appearance: Short with black hair, Background: Programmer.",
@@ -1397,8 +1396,6 @@ function random_text(){
       "Age: 37, Appearance: Medium height, blonde, Background: CEO.",
       "Age: 26, Appearance: Short with blue eyes, Background: Photographer.",
       "Age: 29, Appearance: Tall with green eyes, Background: Historian.",
-      "Age: 32, Appearance: Average height, black hair, Background: Policeman.",
-      "Age: 31, Appearance: Athletic with red hair, Background: MMA fighter.",
       "Age: 27, Appearance: Tall with a beard, Background: Writer.",
       "Age: 23, Appearance: Petite with piercings, Background: Dancer.",
       "Age: 28, Appearance: Muscular with blue eyes, Background: Soldier.",
@@ -1445,7 +1442,7 @@ function random_text(){
       "Age: 26, Appearance: Medium height, black hair, Background: Teacher.",
       "Age: 32, Appearance: Blond, green eyes, Background: Nurse.",
       "Age: 23, Appearance: Short with curly hair, Background: Graphic designer.",
-      "Age: 30, Appearance: Average build, Background: Policeman.",
+      "Age: 30, Appearance: Average build, Background: Librarian.",
       "Age: 28, Appearance: Athletic with tattoos, Background: MMA fighter.",
       "Age: 35, Appearance: Tall with a beard, Background: Writer.",
       "Age: 22, Appearance: Petite with piercings, Background: Dancer.",
@@ -1473,7 +1470,7 @@ function random_text(){
       "Age: 37, Appearance: Medium height, blonde, Background: CEO.",
       "Age: 26, Appearance: Short with blue eyes, Background: Photographer.",
       "Age: 29, Appearance: Tall with green eyes, Background: Historian.",
-      "Age: 32, Appearance: Average height, black hair, Background: Policeman.",
+      "Age: 32, Appearance: Average height, black hair, Background: Musician.",
       "Age: 31, Appearance: Athletic with red hair, Background: MMA fighter.",
       "Age: 27, Appearance: Tall with a beard, Background: Writer.",
       "Age: 23, Appearance: Petite with piercings, Background: Dancer.",
@@ -2299,16 +2296,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   #send {
     float:left;
-    width: calc(100% - 185px);
+    width: calc(100% - 180px);
     height: 27px;
     margin: 5px 5px 0px 0;
   }
 
   #random {
     float:right;
-    width:70px;
+    width: 70px;
     height: 27px;
-    margin: 5px 5px 0px 5px;
+    margin: 5px 0px 0px 5px;
   }
   
   #restartButton_companion{
@@ -2364,27 +2361,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </style>
 </head>
-<BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0">
+<BODY MARGINWIDTH="0" MARGINHEIGHT="0">
 
 <!-- Message Banner -->
 <div id="msg_bar" style="display:none;"></div>
 
 <!-- Title and share -->
 <div class="title_bar">
-    <div class="home">
-      <a href="./" tabindex="1"><img src="images/home.png" class="home_btn"></a>
-    </div>  
-    <div class="settings">
-      <a href="settings/"><img src="images/settings.png" class="settings_btn"></a>
-    </div>
-    <div id="share">
-        <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://libraryofunwrittenbooks.org/" data-a2a-title="The Library of Unwritten Books">
-          <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-        </div>
-    </div>
-    <span id="title"><a href="./" class="title_home">The Library of Unwritten Books</a></span>
-    <div id="subtitle">More stories than stars in the sky</div>
+  <div class="home">
+    <a href="javascrip:void('')" tabindex="1" id="toggle-mode">🌗</a>
+  </div>  
+  <div class="settings">
+    <a href="settings/" tabindex="4"><img src="images/settings.png" class="settings_btn"></a>
   </div>
+  <div id="share">
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://libraryofunwrittenbooks.org/about/" data-a2a-title="About | The Library of Unwritten Books">
+        <a class="a2a_dd" tabindex="3" href="https://www.addtoany.com/share"></a>
+      </div>
+  </div>
+  <span id="title"><a href="./"  tabindex="2" class="title_home">The Library of Unwritten Books</a></span>
+  <div id="subtitle">More stories than stars in the sky</div>
+</div>
 
 <!-- Menu -->
 <div class="menu_bar">
@@ -2454,7 +2451,7 @@ document.addEventListener('DOMContentLoaded', function() {
     FWIW, here are some <a href="https://github.com/colarusso/library-of-unwritten-books" target="_blank">stories in progress</a> you can upload and carry forward. Also, you can submit your own stories for inclusion.<br>
   </p>
   <p style="text-align: center;">
-    <span style="color:rgb(112, 112, 112)"><i><a href="about/" style="color:rgb(112, 112, 112)">LLMs power the library</a>. I prepaid for some usage, but when that runs out, folks will need a <a href="card/" style="color:rgb(112, 112, 112)">library card</a>.</i></span>
+    <span style="color:rgb(112, 112, 112)"><i><a href="about/" style="color:rgb(112, 112, 112)">LLMs power the library</a>. I prepay for some usage each month, but when that runs out, folks need a <a href="card/" style="color:rgb(112, 112, 112)">library card</a>.</i></span>
   </p>
   <input type="file" id="fileInput" style="display: none;"/>
   <div class="footer">

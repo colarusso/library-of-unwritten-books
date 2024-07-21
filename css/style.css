@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-body {
+.body {
 	background-color: #fff;
 	background-repeat: repeat-x;
 	background-position: top -65px center;
@@ -10,6 +10,70 @@ body {
 	font-size: 16px;
 	line-height: 22px;
 }
+
+#toggle-mode {
+	vertical-align: top;
+	font-size: 34px;
+	line-height: 45px;
+	text-decoration: none;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode a {
+    color: #88e3ff;
+}
+
+.dark-mode .input_text {
+	color: black;
+}
+
+.dark-mode .title_home {
+	color: black;
+	color: rgb(255, 255, 255);
+}
+
+.dark-mode #subtitle {
+	color: rgb(209, 209, 209);
+}
+
+.dark-mode .menu_item {
+	color: white;
+}
+
+.dark-mode .menu_item:hover{
+	background-color: #454545;
+}
+
+.dark-mode .choosen {
+	border-bottom: solid 4px #5e5e5f;
+}
+
+.dark-mode textarea {
+	background: #7b7b7b;
+	padding: 3px;
+	border-radius: 3px;
+	color:white;
+	border: 0;
+}
+
+
+.dark-mode button {
+	color: rgb(255, 255, 255);
+	background: rgb(98, 98, 98);
+}
+
+.dark-mode .footer {
+	color: rgb(184, 184, 184);
+}
+
+.dark-mode code {
+	color:black;
+}
+
 
 button {
 	-webkit-appearance:none;
@@ -334,7 +398,7 @@ a.title_home {
 	color:#555;
 }
 
-a.anchor, a.anchor:focus {
+a.anchor {
 	display:block;
 	float:right;
 	margin-left:30px;
@@ -345,6 +409,10 @@ a.anchor, a.anchor:focus {
 	background-repeat: no-repeat;
 	background-position: center;
 	outline: none;
+}
+
+.dark-mode a.anchor {
+	background-image: url("../images/link_white.png");
 }
 
 hr {
@@ -541,15 +609,25 @@ code{
 
 	.home {
 		position: absolute;
+		font-size: 26px;
 		width:58px;
+		height:25px;
 	}
 	#share{
 		width: 29px;
 	}
-	.home_btn {
+	#toggle-mode {
+		vertical-align: text-bottom;
+		font-size: 25px;
+		line-height: 25px;
+		height:25px;
+	}
+	.settings {
+		font-size: 25px;
 		height:25px;
 	}
 	.settings_btn {
+		font-size: 25px;
 		height:25px;
 	}
 	.a2a_svg{

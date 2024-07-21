@@ -13,4 +13,25 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('msg_bar').style.display='block';    
     }
 
+    const toggleModeButton = document.getElementById("toggle-mode");
+  
+    // Retrieve dark mode state from localStorage (if available)
+    const darkModeState = localStorage.getItem("darkMode");
+    if (darkModeState === "enabled") {
+      document.body.classList.add("dark-mode");
+        toggleModeButton.innerHTML = "💡"; // Light bulb emoji
+    }
+  
+    // Toggle between light and dark mode
+    toggleModeButton.addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            toggleModeButton.innerHTML = "💡"; // Light bulb emoji
+        } else {
+            localStorage.removeItem("darkMode");
+            toggleModeButton.innerHTML = "🌗"; // Moon emoji
+        }
+    });
+
 });
