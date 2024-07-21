@@ -74,6 +74,10 @@
 	color:black;
 }
 
+.dark-mode .caption{
+	color: rgb(184, 184, 184);
+}
+
 
 button {
 	-webkit-appearance:none;
