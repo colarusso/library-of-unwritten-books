@@ -38,6 +38,7 @@ var sayit = function(text) {
 }
 
 var talk = function(text) {
+    text = text.replaceAll(/Dr\./gi,"Dr")
     var sentences = text.match(/[^\.!\?]+[\.!\?]+/g);
 
     speechSynthesis.cancel(); // if it errors, this clears out the error.
