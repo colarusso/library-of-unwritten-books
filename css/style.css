@@ -66,6 +66,12 @@
 	background: rgb(98, 98, 98);
 }
 
+.dark-mode select {
+	color: rgb(255, 255, 255);
+	background: rgb(98, 98, 98);
+}
+
+
 .dark-mode .footer {
 	color: rgb(184, 184, 184);
 }
@@ -90,8 +96,26 @@ button {
 	background: rgb(211, 211, 211);
 }
 
+select {
+	width:100%;
+	text-align: center;
+	opacity: 1;
+	border-radius: 3px;
+	font-size: 14px;
+	color:black;
+	border: 1px solid #7b7b7b;
+	padding: 3px;
+	background: rgb(211, 211, 211);
+}
+
+
 textarea {
 	font-size: 14px;
+}
+
+iframe {
+	border: 1px solid #7b7b7b;
+	border-radius: 3px;
 }
 
 blockquote {

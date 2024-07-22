@@ -567,6 +567,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function choose_prompt(choice) {
 
+  document.getElementById('unfinished').style.display='none';
+
   calls+=1;
   console.log("Choosing template: "+choice)
   console.log("Runs w/o interaction: "+calls)
@@ -2075,8 +2077,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Create button element
   const button = document.createElement('button');
   button.id = `open_scratch` // Set button id
-  button.textContent = "Upload story in progress"; // Set button text
-  button.dataset.choice = "Upload story in progress"; // Set data-choice attribute
+  button.textContent = "Upload story from file"; // Set button text
+  button.dataset.choice = "Upload story from file"; // Set data-choice attribute
   button.style.width = '100%'; // Set styles
   button.style.marginBottom = '5px';
 
@@ -2154,6 +2156,104 @@ document.addEventListener('DOMContentLoaded', function() {
   //save_scratch.addEventListener('click', function() {
   //    saveTextAsFile(document.getElementById('scratch_pad').value,"scratch_pad.txt")
   //});
+
+  const searchParams = new URLSearchParams(window.location.search);
+  var error_code = 0
+
+  if (searchParams.has('text')){
+    if (localStorage.getItem("scratch_pad")!="") {
+        file = "samples/"+searchParams.get('text');
+        fetch(file)
+        .then((res) => res.text())
+        .then((text) => {
+          if (text.startsWith("You are the game master for a table-top role-playing game.")) {
+            try {
+                localStorage.setItem('scratch_pad', text);
+            } catch (error) {
+                error_code = 1;
+                console.error("Error reading file: ", error);
+            }
+          } else {
+            error_code = 1;
+          }
+          if (error_code==0) {
+            tmp_text = text.split("========")
+            tmp_text = tmp_text[tmp_text.length-1].trim().replaceAll("\n","<br>")
+            tmp_title = tmp_text.split("<br>")[0]
+            // do something with "text"
+            if (confirm(`By clicking "OK" you will overwrite your current story, replacing it with beginning of `+tmp_title.toUpperCase()+`. Choose "Cancel" to stop without loading `+tmp_title.toUpperCase()+`.`) == true) {
+              bubble+=1;
+              document.getElementById('unfinished').style.display='none';
+              document.getElementById('transcript').style.display='block';
+              document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
+              visible_calls+=1;
+              choose_prompt("Role Play 01");
+              setTimeout(function(){  
+                //window.scrollTo(0,0);
+                visible_calls=0;
+                scroll2Q("text_1");
+                visible_calls+=1;
+              }, 1);
+              
+              //var url= document.location.href;
+              //window.history.pushState({}, "", url.split("?")[0]);
+              //location.reload();
+            } else {
+              var url= document.location.href;
+              window.history.pushState({}, "", url.split("?")[0]);
+            }
+          } else {
+            alert("Something went wrong. The file you're trying to read isn't there or is malformed.")
+            var url= document.location.href;
+            window.history.pushState({}, "", url.split("?")[0]);
+          }
+        })
+        .catch((e) => console.error(e));
+    } else {
+        file = "samples/"+searchParams.get('text');
+        fetch(file)
+        .then((res) => res.text())
+        .then((text) => {
+          if (text.startsWith("You are the game master for a table-top role-playing game.")) {
+            try {
+                localStorage.setItem('scratch_pad', text);
+            } catch (error) {
+                error_code = 1;
+                console.error("Error reading file: ", error);
+            }
+          } else {
+            error_code = 1;
+          }
+          if (error_code==0) {
+            tmp_text = text.split("========")
+            tmp_text = tmp_text[tmp_text.length-1].trim().replaceAll("\n","<br>")
+            tmp_title = tmp_text.split("<br>")[0]
+            // do something with "text"
+            bubble+=1;
+            document.getElementById('unfinished').style.display='none';
+            document.getElementById('transcript').style.display='block';
+            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
+            visible_calls+=1;
+            choose_prompt("Role Play 01");
+            setTimeout(function(){  
+              //window.scrollTo(0,0);
+              visible_calls=0;
+              scroll2Q("text_1");
+              visible_calls+=1;
+            }, 1);
+            
+            //var url= document.location.href;
+            //window.history.pushState({}, "", url.split("?")[0]);
+            //location.reload();
+          } else {
+            alert("Something went wrong. The file you're trying to read isn't there or is malformed.")
+            var url= document.location.href;
+            window.history.pushState({}, "", url.split("?")[0]);
+          }
+        })
+        .catch((e) => console.error(e));
+    }
+  }
 
 });
 </script>
@@ -2446,10 +2546,15 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   </div>
+  <div id="unfinished">
+  <hr>
+  <select autocomplete="off" onChange="window.location.href=this.value">
+    <option value="" SELECTED>Continue an unfinished book</option>
+    <option value="?text=test_story.txt">Martian Anomaly (test)</option>
+  </select>
+  <hr>
+  </div>
   <!-- END PAGE CONTENT -->
-  <p style="text-align: center;display: none;">
-    FWIW, here are some <a href="https://github.com/colarusso/library-of-unwritten-books" target="_blank">stories in progress</a> you can upload and carry forward. Also, you can submit your own stories for inclusion.<br>
-  </p>
   <p style="text-align: center;">
     <span style="color:rgb(112, 112, 112)"><i><a href="about/" style="color:rgb(112, 112, 112)">LLMs power the library</a>. I prepay for some usage each month, but when that runs out, folks need a <a href="card/" style="color:rgb(112, 112, 112)">library card</a>.</i></span>
   </p>
