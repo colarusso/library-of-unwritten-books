@@ -2185,7 +2185,7 @@ document.addEventListener('DOMContentLoaded', function() {
               bubble+=1;
               document.getElementById('unfinished').style.display='none';
               document.getElementById('transcript').style.display='block';
-              document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("\n","<br>").replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
+              document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text.replaceAll("\n","<br>")+"</div></div>";
               visible_calls+=1;
               choose_prompt("Role Play 01");
               setTimeout(function(){  
@@ -2232,7 +2232,7 @@ document.addEventListener('DOMContentLoaded', function() {
             bubble+=1;
             document.getElementById('unfinished').style.display='none';
             document.getElementById('transcript').style.display='block';
-            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("\n","<br>").replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text+"</div></div>";
+            document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><a href='javascript:audio_play(`"+tmp_text.replaceAll("'","")+"`)' class='speak'>🎧</a><div class='output_text'>"+tmp_text.replaceAll("\n","<br>")+"</div></div>";
             visible_calls+=1;
             choose_prompt("Role Play 01");
             setTimeout(function(){  
