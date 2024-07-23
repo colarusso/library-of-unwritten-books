@@ -1339,6 +1339,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 visible_calls=0;
                 scroll2Q("text_1");
                 visible_calls+=1;
+                var url= document.location.href;
+                window.history.pushState({}, "", url.split("?")[0]);
               }, 1);
               
               //var url= document.location.href;
@@ -1386,6 +1388,8 @@ document.addEventListener('DOMContentLoaded', function() {
               visible_calls=0;
               scroll2Q("text_1");
               visible_calls+=1;
+              var url= document.location.href;
+              window.history.pushState({}, "", url.split("?")[0]);
             }, 1);
             
             //var url= document.location.href;
@@ -1695,8 +1699,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="unfinished">
   <hr>
   <select autocomplete="off" onChange="window.location.href=this.value">
-    <option value="" SELECTED>Pick up an unfinished book</option>
-    <option value="?text=test_story.txt">Martian Anomaly (test)</option>
+    <option value="" SELECTED>Test drive an unfinished book</option>
+    <option value="?text=dragons_and_desks.txt">Dragons and Desk Jobs</option>
+    <option value="?text=alice_and_ada.txt">Alice and the Thinking Machines</option>
+    <option value="?text=pride_and_prejudice.txt">Pride and Prejudice with Androids</option>
   </select>
   <hr>
   </div>
