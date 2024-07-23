@@ -1308,7 +1308,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (searchParams.has('text')){
     if (localStorage.getItem("scratch_pad")!="") {
-        file = "samples/"+searchParams.get('text');
+        file = "starters/"+searchParams.get('text');
         fetch(file)
         .then((res) => res.text())
         .then((text) => {
@@ -1358,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch((e) => console.error(e));
     } else {
-        file = "samples/"+searchParams.get('text');
+        file = "starters/"+searchParams.get('text');
         fetch(file)
         .then((res) => res.text())
         .then((text) => {
@@ -1704,7 +1704,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <option value="?text=alice_and_ada.txt">Alice and the Thinking Machines</option>
     <option value="?text=pride_and_prejudice.txt">Pride and Prejudice with Androids</option>
   </select>
-  <hr>
+  <p style="text-align: center;">
+    Want to see your story starter here? <a href="https://github.com/colarusso/library-of-unwritten-books/tree/main/starters" target="_blank">Read this</a>.
+  </p>
   </div>
   <!-- END PAGE CONTENT -->
   <p style="text-align: center;">
