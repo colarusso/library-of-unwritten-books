@@ -4,9 +4,9 @@ You are the game master for a table-top role-playing game. You are playing with 
 
 Setting and genre: 
 
-- Your story telling should adhere to the following genre expectations: A futuristic retelling of Pride and Prejudice.
-- Your story will start at the following place: The events begin at Groombridge Place. 
-- Your story is set at the following time: A near future in which the wide-spread adoption of androids has lead to a leisurely lifestyle much like that of the landed gentry in Georgian period Britain. Though this is the future, the use of technology is subtle yet ubiquitous. 
+- Your story telling should adhere to the following genre expectations: A futuristic retelling of Pride and Prejudice which is to say, a romance
+- Your story will start at the following place: The events begin at Groombridge Place
+- Your story is set at the following time: A near future in which the wide-spread adoption of androids and automation given most people the means to lead a leisurely lifestyle much like that of the landed gentry in Regency period Britain.
 
 ========
 
@@ -23,7 +23,7 @@ Additional Notes:
 
 You also asked them if there was anything else would like you to incorporate into the story. This is what they said: 
 
-The story should be recognizable to readers of Jane Austen's Pride & Prejudice but with a modern take. As explained above, the wide-spread adoption of androids has lead to a leisurely lifestyle for most of humanity, much like that of the landed gentry in Georgian period Britain, making the translation of this classic tale into a new story understandable and fitting. Again, the scifi elements are understated and subtle.  
+The story should be recognizable to readers of Jane Austen's Pride & Prejudice but with a modern take. As explained above, the wide-spread adoption of androids and automation now allow everyone to live a life of leisure much like that of the landed gentry in Regency period Britain, making the translation of this classic tale into a new story understandable and fitting. The scifi elements, however, should be understated and subtle. When creating the story's first lines, start with "It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors." 
 
 ========
 
@@ -45,12 +45,13 @@ Unless the other player said otherwise, your prose should be high quality like t
 
 ========
 
+Pride and Prejudice with Androids
 
-Pride & Prejudice 2099
+It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighborhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors.
 
-The sun dipped gracefully over the manicured grounds of Groombridge Place, casting a warm, golden haze that danced among the tall, ancient trees. The air hummed with the faint murmur of advanced stabilization drones, unseen yet impeccably maintaining the estate's verdant charm. Elizabeth Bennet stood on the balcony overlooking the serene landscape, her gaze settling on the horizon. Her slender silhouette was framed by the soft, white lace of her gown, a perfect blend of regency elegance and modern fabric technology, designed to keep one in absolute comfort regardless of external conditions.
+The toil of earlier ages had been replaced by a post-scacety society enabled by androids and automation, and Groombridge Place stood timeless a beacon. The Bennet household buzzed with the metallic clinks of androids preparing for the arrival of the new occupants of Netherfield Park. Mrs. Bennet, a woman of unquenchable enthusiasm and relentless pursuit of advantageous matches for her daughters, flitted about, her eyes alight with speculative glee.
 
-'Lizzy, dear, come away from there,' called Mrs. Bennet from the drawing room, her voice a blend of programmed maternal concern and genuine warmth. 'The Bingleys are expected any moment now, and you know how your father detests tardiness.'
+'Elizabeth,' she called, her voice echoing through the minimalist corridors illuminated by soft ambient lights, 'did you hear? Mr. Bingley, a gentleman of considerable fortune, is moving into Netherfield!'
 
-Elizabeth turned, a smile playing on her lips. 'Yes, Mother.' Her steps were measured as she walked inside, the slight whirr of her personal assistant android, Pemberley, following her like an obedient shadow. She couldn’t help but reflect on the irony of the occasion—how the Bingleys’ arrival, facilitated by automated transportation capsules and scheduled down to the millisecond, mirrored the ceremonious arrivals and social visits of a bygone era. Yet, this was the world now: a perfect blend of tradition and innovation.
+Elizabeth Bennet, the second-eldest among her sisters, lifted her gaze from her tablet where she had been engrossed in a classic novel. 'Yes, Mama,' she replied with a wry smile, 'but do we know anything about his character, or are we solely interested in his credits?'
 
