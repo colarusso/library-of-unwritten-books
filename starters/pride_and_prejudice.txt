@@ -15,7 +15,7 @@ The Protagonist:
 Earlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.
 
 - name: Elizabeth Bennet
-- additional notes: Elizabeth Bennet is the second-eldest of the Bennet daughters, she is attractive, witty and intelligent – but with a tendency to form tenacious and prejudiced first impressions. As the story progresses, so does her relationship with Mr Darcy. The course of Elizabeth and Darcy's relationship is ultimately decided when Darcy overcomes his pride, and Elizabeth overcomes her prejudice, leading them both to surrender to their love for each other.
+- additional notes: Elizabeth Bennet is the second-eldest of the Bennet daughters, she is attractive, witty and intelligent – but with a tendency to form tenacious and prejudiced first impressions. Her nickname is Lizzy.
 
 ========
 
@@ -23,7 +23,7 @@ Additional Notes:
 
 You also asked them if there was anything else would like you to incorporate into the story. This is what they said: 
 
-The story should be recognizable to readers of Jane Austen's Pride & Prejudice but with a modern take. As explained above, the wide-spread adoption of androids and automation now allow everyone to live a life of leisure much like that of the landed gentry in Regency period Britain, making the translation of this classic tale into a new story understandable and fitting. The scifi elements, however, should be understated and subtle. When creating the story's first lines, start with "It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors." 
+The story should be recognizable to readers of Jane Austen's Pride & Prejudice as an adapataion with a modern take. Eventualy Lizzy will meet Mr. Darcy, and he will fall for her. At the opening of this tale, however, Lizzy has not yet met Mr. Darcy. As explained above, the wide-spread adoption of androids and automation now allow everyone to live a life of leisure much like that of the landed gentry in Regency period Britain, making the translation of this classic tale into a new story understandable and fitting. The scifi elements, however, should be understated and subtle. When creating the story's first lines, start with "It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors." 
 
 ========
 
