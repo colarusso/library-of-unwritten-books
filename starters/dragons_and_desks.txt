@@ -15,7 +15,7 @@ The Protagonist:
 Earlier you asked the other player to fill in a character sheet for the protagonist. Here are their answers. Use them to help you shape the story.
 
 - name: Alex
-- additional notes: Alex is a normal human, and their gender is never revealed. When describing them always use they/them pronouns. 
+- additional notes: Alex is a normal human, and their gender is never revealed. When describing them always use they/them pronouns. They have no magical powers.  
 
 ========
 
