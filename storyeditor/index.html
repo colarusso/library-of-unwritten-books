@@ -1904,6 +1904,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		display:none;
 	}
 
+  .dark-mode textarea {
+    background: #333;
+  }
+
 	@media only screen and (max-width: 450px) {
 		
 		#inline_scratch {
@@ -1960,7 +1964,13 @@ document.addEventListener('DOMContentLoaded', function() {
       <!--
         START CUSTOM CONTENT
       -->
-      <div class="custom_header"></div>
+      <div class="custom_header">
+        <h2 style="margin-top: 10px;">AI Story Editor</h2>
+        <p>
+          This page operates much like the Library's home page, allowing you to read-write a story by playing the part of the protagonist, serving as what we call a reader-author. See the first two buttons. You can shift the balance even more towards the author side by using subsequent buttons. E.g., you can use <i>Transform selected text</i> to select a paragraph and rewrite it.
+        </p>
+        <hr>
+      </div>
       <!--
         END CUSTOM CONTENT
       -->
@@ -1974,18 +1984,18 @@ document.addEventListener('DOMContentLoaded', function() {
       <div id="text_input" style="display:none;">
         <textarea id="user_input"></textarea>
         <button id="send">Send</button>
-        <button id="restartButton_companion">Main Menu</button>
+        <button id="restartButton_companion">Menu</button>
       </div>
       <div id="chat_text_input" style="display:none;">
         <textarea id="chat_user_input"></textarea>
         <button id="chat_send" >Send</button>
-        <button id="restartButton_companion_chat">Main Menu</button>
+        <button id="restartButton_companion_chat">Menu</button>
       </div>
       <div id="continue_gen" style="display:none;">
         <button id='continueButton'>Continue text generation</button>
       </div>
       <a href="#" id="save_transcript">save transcript</a>
-      <button id="restartButton">Main Menu</button>
+      <button id="restartButton">Menu</button>
       <div id="credentials" style="display:none;">
         <table id="credentials_table">
           <tr><td>API&nbsp;Base:&nbsp;</td><td width="100%"><input id="api_base" style="width:100%"></td></tr>
