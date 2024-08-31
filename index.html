@@ -1209,11 +1209,21 @@ document.addEventListener('DOMContentLoaded', function () {
       // Edit current story
       const button = document.createElement('button');
       button.id = `edit_scratch` // Set button id
-      button.textContent = "Edit current story inplace"; // Set button text
-      button.dataset.choice = "Edit current story inplace"; // Set data-choice attribute
+      button.textContent = "Edit current story in place"; // Set button text
+      button.dataset.choice = "Edit current story in place"; // Set data-choice attribute
       button.style.width = '100%'; // Set styles
       button.style.marginBottom = '5px';
       buttonList.appendChild(button);
+    } else if ((key=="Pick up where you left off") && (localStorage.getItem("scratch_pad")=="")) {
+      // Open blank AI Story Editor
+      const button = document.createElement('button');
+      button.id = `edit_scratch` // Set button id
+      button.textContent = "Open in place editor"; // Set button text
+      button.dataset.choice = "Edit current story in place"; // Set data-choice attribute
+      button.style.width = '100%'; // Set styles
+      button.style.marginBottom = '5px';
+      buttonList.appendChild(button);
+
     }
 
   };
@@ -1250,13 +1260,13 @@ window.onbeforeunload = function () {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  if (localStorage.getItem("scratch_pad")!="") {
+  //if (localStorage.getItem("scratch_pad")!="") {
     var edit_scratch = document.getElementById('edit_scratch');
     document.getElementById('edit_scratch').addEventListener('click', function() {
         //document.location.href = "edit/";
         document.location.href = "storyeditor/";
     });
-  }
+  //}
  
   var open_scratch = document.getElementById('open_scratch');
   document.getElementById('open_scratch').addEventListener('click', function() {
