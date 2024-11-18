@@ -1480,6 +1480,11 @@ async function openai_call(prompt_text) {
         LLM_text = JSON.parse(xhr.responseText)["choices"][0]["message"]["content"];
         llm_messages.push({"role": "assistant", "content": LLM_text})
         after_build(LLM_text, JSON.parse(xhr.responseText)["choices"][0]["finish_reason"]);
+        console.log("BEHAVIOR:"+behavior)
+        if ((behavior!="chat") && (behavior!="next")) { 
+          llm_messages = []  
+        }
+
       } catch (error) {
         llm_messages.pop();
         try {
@@ -1532,21 +1537,83 @@ async function openai_call(prompt_text) {
       }
     }};
 
-    if (behavior!="chat") { 
-      llm_messages = []  
-    }
 
-    llm_messages.push({"role": "user", "content": prompt_text})
-    var data = {
-              "model": model, 
-              "messages": llm_messages,
-              "temperature": temperature,
-              "max_tokens": max_tokens
-            };
+  llm_messages.push({"role": "user", "content": prompt_text})
+  var data = {
+            "model": model, 
+            "messages": llm_messages,
+            "temperature": temperature,
+            "max_tokens": max_tokens
+          };
 
   if (json_mode==1) {
     console.log("Attempting JSON mode");
-    data["response_format"]={ "type": "json_object" }  
+    if (localStorage.api_base.includes('#lmstudio')) {
+      data["response_format"]= {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "llm_response",
+          "strict": "true",
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+      if (prompt_text.startsWith(`Produce a JSON object where the key is \"genre\"`)) {
+        data["response_format"]["json_schema"]["schema"]["properties"] = {
+          "genre": {
+            "type": "string"
+          }
+        }
+        data["response_format"]["json_schema"]["schema"]["required"] = ["genre"]
+      } else if (prompt_text.endsWith(`\"title\" and it contains an evocative and appropriate title for the type of story you want to tell. \n\n`)) {
+        data["response_format"]["json_schema"]["schema"]["properties"] = {
+          "opening": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          } 
+        }
+        data["response_format"]["json_schema"]["schema"]["required"] = ["title","opening"]
+      } else if (prompt_text.endsWith(`Don't hide information in the protagonist's mind. The reader should know everything they do and in detail. \n`)) {
+        data["response_format"]["json_schema"]["schema"]["properties"] = {
+          "difficulty": {
+            "type": "string"
+          },
+          "difficulty_cutoff": {
+            "type": "integer"
+          },
+          "roll": {
+            "type": "integer"
+          },
+          "success": {
+            "type": "integer"
+          },
+          "narrative": {
+            "type": "string"
+          }
+        }
+        data["response_format"]["json_schema"]["schema"]["required"] = ["difficulty","difficulty_cutoff","roll","success","narrative"]
+      } else if (prompt_text.startsWith(`You're helping write a short story. `)) {
+        data["response_format"]["json_schema"]["schema"]["properties"] = {
+          "next_beat": {
+            "type": "string"
+          }
+        }
+        data["response_format"]["json_schema"]["schema"]["required"] = ["next_beat"]
+      } else if (prompt_text.startsWith(`In a moment, I'm going to show you some background materials used to run a role playing game, followed by the text of how things played out.`)) {
+        data["response_format"]["json_schema"]["schema"]["properties"] = {
+          "next_beat": {
+            "type": "string"
+          }
+        }
+        data["response_format"]["json_schema"]["schema"]["required"] = ["next_beat"]
+      }     
+    } else {
+      data["response_format"]={ "type": "json_object" }  
+    }           
   }
 
   console.log(data);
