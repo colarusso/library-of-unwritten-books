@@ -23,7 +23,7 @@ Additional Notes:
 
 You also asked them if there was anything else would like you to incorporate into the story. This is what they said: 
 
-The story should be recognizable to readers of Jane Austen's Pride & Prejudice as an adapataion with a modern take. Eventualy Lizzy will meet Mr. Darcy, and he will fall for her. At the opening of this tale, however, Lizzy has not yet met Mr. Darcy. As explained above, the wide-spread adoption of androids and automation now allow everyone to live a life of leisure much like that of the landed gentry in Regency period Britain, making the translation of this classic tale into a new story understandable and fitting. The scifi elements, however, should be understated and subtle. When creating the story's first lines, start with "It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors." 
+The story should be recognizable to readers of Jane Austen's Pride & Prejudice as an adaptation with a modern take. Eventualy Lizzy will meet Mr. Darcy, and he will fall for her. At the opening of this tale, however, Lizzy has not yet met Mr. Darcy. As explained above, the wide-spread adoption of androids and automation now allow everyone to live a life of leisure much like that of the landed gentry in Regency period Britain, making the translation of this classic tale into a new story understandable and fitting. The scifi elements, however, should be understated and subtle. 
 
 ========
 
@@ -47,11 +47,12 @@ Unless the other player said otherwise, your prose should be high quality like t
 
 Pride and Prejudice with Androids
 
-It is a truth universally acknowledged, that one in possession of good fortune must be in want of a companion. However little known the feelings or views of others on first entering a neighborhood, this truth is so well fixed in the minds of the surrounding families, that they may be considered as the rightful property of those eligible would-be suitors.
+It is a truth universally acknowledged, that a person in possession of good fortune must be in want of a companion. In this age of boundless ease, where status was measured not by wealth but by one’s reputation and connections, such truths held as firm as ever.
 
-The toil of earlier ages had been replaced by a post-scacety society enabled by androids and automation, and Groombridge Place stood timeless a beacon. The Bennet household buzzed with the metallic clinks of androids preparing for the arrival of the new occupants of Netherfield Park. Mrs. Bennet, a woman of unquenchable enthusiasm and relentless pursuit of advantageous matches for her daughters, flitted about, her eyes alight with speculative glee.
+At Groombridge Place, where the Bennet family moved among the gentle rhythms of cultivated life, Mrs. Bennet entered the drawing room in a flutter of restless energy.
 
-'Elizabeth,' she called, her voice echoing through the minimalist corridors illuminated by soft ambient lights, 'did you hear? Mr. Bingley, a gentleman of considerable fortune, is moving into Netherfield!'
+'Lizzy!' she cried. 'Netherfield has been let at last! A Mr. Bingley, with impeccable social standing, is to take up residence!'
 
-Elizabeth Bennet, the second-eldest among her sisters, lifted her gaze from her tablet where she had been engrossed in a classic novel. 'Yes, Mama,' she replied with a wry smile, 'but do we know anything about his character, or are we solely interested in his credits?'
+Elizabeth glanced up from her book, her expression thoughtful. 'And does this Mr. Bingley have any merits beyond his credentials? Or are we to admire his connections alone?'
 
+Mrs. Bennet waved the question away. 'Oh, Lizzy, connections are all that matter in a gentleman seeking a wife!'
