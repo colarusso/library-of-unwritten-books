@@ -50,7 +50,7 @@
     "max_tokens": 250,
     "output": 0,
     "json_mode": 0,
-    "output_to": 6,
+    "output_to": 2,
     "behavior": "Role Play 01",
     "hide_button": true
   },
@@ -72,7 +72,7 @@
     "max_tokens": 250,
     "output": 0,
     "json_mode": 0,
-    "output_to": 6,
+    "output_to": 2,
     "behavior": "move forward 2",
     "hide_button": true
   },
@@ -94,7 +94,7 @@
     "max_tokens": 250,
     "output": 0,
     "json_mode": 0,
-    "output_to": 6,
+    "output_to": 2,
     "behavior": "Role Play 01",
     "hide_button": true
   },
@@ -116,7 +116,7 @@
     "max_tokens": 250,
     "output": 0,
     "json_mode": 0,
-    "output_to": 6,
+    "output_to": 2,
     "behavior": "Add to story (author/narrator)",
     "hide_button": true
   },

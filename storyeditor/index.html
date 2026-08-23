@@ -7,7 +7,7 @@
 
 <!-- JS & style -->
 <link rel="stylesheet" type="text/css" href="../css/style.css?v=2024-07-21">
-<script src="../js/functions.js?v=2024-07-21"></script>
+<script src="../js/functions.js?v=2026-08-23"></script>
 
 <script>
 
@@ -570,7 +570,7 @@ const default_prompts = {
     "hide_button": false
   },
   "🔬 Expand selected (short) text": {
-    "prompt": "[# This template is the first in a chain of templates that can either end or loop back on itself. It works by getting the LLM to generate some dialog and send that along with text the user has highlighted to another template. That template takes an action and feeds into another template, and so on and so on. Note: we're using gpt-3.5-turbo-1106 as a model here and in some of the subsequent templates in this chain. When this model is retired it will break things and require updating. #]You are an actor playing the role of a helpful writing assistant. In this scene you will interact with a writer. You will ask them some questions about some copy they are working on. You're goal is to ask them enough question such that their answers can be used to expand on the existing text. That is, you want them to give you things one could use to expand on the existing text. As this is a dialogue, we will present it in the form of a transcript. The writer will start by reading what they have so far. \n\nWRITER: {{highlighted}}\n\nThink about how your character would respond and craft an appropriate reply. You will provide the text of this reply along with one other piece of information as a JSON object. The object will have two key-value pairs. The first key-value pair's key is \"transcript\" and the value is that of the transcript above, starting with \"WRITER:\" and followed by the text of their copy. Be sure to escape an quotation marks. The second key-value pair has a key called \"reply\" and its value is the response you crafted above (i.e., it is the text of your character's reply to the above, your first question for the writer). Include only the text of your reply (e.g., do NOT preface the text with the name of the speaker).\n",
+    "prompt": "[# This template is the first in a chain of templates that can either end or loop back on itself. It works by getting the LLM to generate some dialog and send that along with text the user has highlighted to another template. That template takes an action and feeds into another template, and so on and so on. Note: we're using gpt-3.5-turbo-1106 as a model here and in some of the subsequent templates in this chain. When this model is retired it will break things and require updating. #]You are an actor playing the role of a helpful writing assistant. In this scene you will interact with a writer. You will ask them some questions about some copy they are working on. You're goal is to ask them enough question such that their answers can be used to expand on the existing text. That is, you want them to give you things one could use to expand on the existing text. As this is a dialogue, we will present it in the form of a transcript. The writer will start by reading what they have so far. \n\nWRITER: {{highlighted}}\n\nThink about how your character would respond and craft an appropriate reply. You will provide the text of this reply along with one other piece of information as a JSON object. The object will have two key-value pairs. The first key-value pair's key is \"transcript\" and the value is that of the transcript above, starting with \"WRITER:\" and followed by the text of their copy. Return valid JSON only; escape quotation marks, backslashes, and line breaks inside string values according to JSON syntax. The second key-value pair has a key called \"reply\" and its value is the response you crafted above (i.e., it is the text of your character's reply to the above, your first question for the writer). Include only the text of your reply (e.g., do NOT preface the text with the name of the speaker).\n",
     "model": "gpt-3.5-turbo-1106",
     "temperature": 0.7,
     "max_tokens": 250,
@@ -592,7 +592,7 @@ const default_prompts = {
     "hide_button": true
   },
   "Expand Text 2": {
-    "prompt": "[# This template looks very much like the first in our chain, except it pulls from the Scratch Pad and feeds into \"Expand Text 3.\" #] You are an actor playing the role of a helpful writing assistant. In this scene you will interact with a writer. You are asks them questions about some copy they are working on. You're goal is to ask them enough question such that their answers can be used to expand on the existing text. That is, you want them to give you things one could use to expand on the existing text. As this is a dialogue, we will present it in the form of a transcript. The writer began by reading the copy they have so far. \n\n{{scratch}}\n\nThink about how your character would respond and craft an appropriate reply. You will provide the text of this reply along with one other piece of information as a JSON object. The object will have two key-value pairs. The first key-value pair's key is \"transcript\" and the value is that of the transcript above, starting with \"WRITER:\" the text of their copy and the subsequent questions and answers. Be sure to escape an quotation marks. And DO NOT repeat yourself (i.e., ask new questions). The second key-value pair has a key called \"reply\" and its value is the response you crafted above (i.e., it is the text of your character's reply to the above, your question for the writer). Make sure it's a question. Include only the text of your reply (e.g., do NOT preface the text with the name of the speaker). \n",
+    "prompt": "[# This template looks very much like the first in our chain, except it pulls from the Scratch Pad and feeds into \"Expand Text 3.\" #] You are an actor playing the role of a helpful writing assistant. In this scene you will interact with a writer. You are asks them questions about some copy they are working on. You're goal is to ask them enough question such that their answers can be used to expand on the existing text. That is, you want them to give you things one could use to expand on the existing text. As this is a dialogue, we will present it in the form of a transcript. The writer began by reading the copy they have so far. \n\n{{scratch}}\n\nThink about how your character would respond and craft an appropriate reply. You will provide the text of this reply along with one other piece of information as a JSON object. The object will have two key-value pairs. The first key-value pair's key is \"transcript\" and the value is that of the transcript above, starting with \"WRITER:\" the text of their copy and the subsequent questions and answers. Return valid JSON only; escape quotation marks, backslashes, and line breaks inside string values according to JSON syntax. And DO NOT repeat yourself (i.e., ask new questions). The second key-value pair has a key called \"reply\" and its value is the response you crafted above (i.e., it is the text of your character's reply to the above, your question for the writer). Make sure it's a question. Include only the text of your reply (e.g., do NOT preface the text with the name of the speaker). \n",
     "model": "gpt-3.5-turbo-1106",
     "temperature": 0.7,
     "max_tokens": 2000,
@@ -1157,7 +1157,7 @@ function choose_prompt(choice) {
         }
       } else {
         if (selectedText.length>0) {
-          llm_prompt = llm_prompt.replace(/{{highlighted}}/g, selectedText.replace(/({|})/g, "\\$1")); 
+          llm_prompt = replaceAllLiteral(llm_prompt, /{{highlighted}}/g, selectedText);
           try {
             llm_prompt = llm_prompt.replace(/{{nSelectedWords}}/g, selectedText.match(/\b(\w+)\b/g).length);             
           } catch (error) {
@@ -1182,7 +1182,7 @@ function choose_prompt(choice) {
           }
         } else {
           if (bodyText.length>0) {
-            llm_prompt = llm_prompt.replace(/{{innerText}}/g, bodyText.replace(/({|})/g, "\\$1"));
+            llm_prompt = replaceAllLiteral(llm_prompt, /{{innerText}}/g, bodyText);
             try {
               llm_prompt = llm_prompt.replace(/{{nWordsOnPage}}/g, bodyText.match(/\b(\w+)\b/g).length);              
             } catch (error) {
@@ -1203,10 +1203,11 @@ function choose_prompt(choice) {
 
     if (abandon_prompt == 0) {
       // Place scratch pad text into template
-      llm_prompt = llm_prompt.replace(/{{scratch}}/g, localStorage.getItem('scratch_pad'));
+      llm_prompt = replaceAllLiteral(llm_prompt, /{{scratch}}/g, localStorage.getItem('scratch_pad'));
+      scratch = null;
       try {
         console.log("Attempting to parse Scratch Pad for JSON...")
-        scratch = JSON.parse(localStorage.getItem('scratch_pad').trim());
+        scratch = JSON.parse((localStorage.getItem('scratch_pad') || '').trim());
       } catch (error) {
         console.log("Scratch Pad isn't JSON.")
       }
@@ -1216,15 +1217,25 @@ function choose_prompt(choice) {
         console.log("Checking scratch...");
         for (item of scratchjson) {
             key = [...item.matchAll(/{{scratch\["([a-zA-Z_]+)"\]}}/g)][0][1];
-            console.log(" - scratch[\""+key+"\"]="+scratch[key]);
-            llm_prompt = llm_prompt.replace("{{scratch[\""+key+"\"]}}", scratch[key]);  
+            try {
+              const requiredValue = getRequiredTemplateValue(scratch, key, 'scratch');
+              console.log(" - scratch[\""+key+"\"]="+requiredValue);
+              llm_prompt = replaceAllLiteral(llm_prompt, "{{scratch[\""+key+"\"]}}", requiredValue);
+            } catch (error) {
+              console.error("Chained prompt stopped:", error);
+              alert(error.message + " The chain has been stopped rather than displaying a blank intermediate result.");
+              document.getElementById('thinking_box').style.display='none';
+              calls=0;
+              insert_restart();
+              return;
+            }
         }
       }
       
       if (passThrough.constructor === ({}).constructor) {
-        llm_prompt = llm_prompt.replace(/{{passThrough}}/g, JSON.stringify(passThrough));
+        llm_prompt = replaceAllLiteral(llm_prompt, /{{passThrough}}/g, JSON.stringify(passThrough));
       } else {
-        llm_prompt = llm_prompt.replace(/{{passThrough}}/g, passThrough);
+        llm_prompt = replaceAllLiteral(llm_prompt, /{{passThrough}}/g, passThrough);
       }
       var passThroughjson = llm_prompt.match(/{{passThrough\["[a-zA-Z_-]+"\]}}/g);
       // Loop through each variable and present it as a question
@@ -1232,8 +1243,18 @@ function choose_prompt(choice) {
         console.log("Checking passThrough...");
         for (item of passThroughjson) {
             key = [...item.matchAll(/{{passThrough\["([a-zA-Z_]+)"\]}}/g)][0][1];
-            console.log(" - passThrough[\""+key+"\"]="+passThrough[key]);
-            llm_prompt = llm_prompt.replace("{{passThrough[\""+key+"\"]}}", passThrough[key]);  
+            try {
+              const requiredValue = getRequiredTemplateValue(passThrough, key);
+              console.log(" - passThrough[\""+key+"\"]="+requiredValue);
+              llm_prompt = replaceAllLiteral(llm_prompt, "{{passThrough[\""+key+"\"]}}", requiredValue);
+            } catch (error) {
+              console.error("Chained prompt stopped:", error);
+              alert(error.message + " The chain has been stopped rather than displaying a blank intermediate result.");
+              document.getElementById('thinking_box').style.display='none';
+              calls=0;
+              insert_restart();
+              return;
+            }
         }
       }
 
@@ -1355,7 +1376,7 @@ function build_prompt() {
         }
         break
       } else {
-        llm_prompt = llm_prompt.replaceAll(last_question,question_arry[last_question]);
+        llm_prompt = replaceAllLiteral(llm_prompt, last_question, question_arry[last_question]);
         build_prompt(0);
         break
       }
@@ -1391,9 +1412,9 @@ function submit_text() {
     document.getElementById('text_input').style.display='none'
     document.getElementById('thinking_box').style.display='block';
     bubble+=1;
-    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='input_text'>"+answer+"</div></div>";
+    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='input_text'>"+accountForHTML(answer)+"</div></div>";
     scroll2Q("text_"+bubble);
-    llm_prompt = llm_prompt.replaceAll(last_question, answer);
+    llm_prompt = replaceAllLiteral(llm_prompt, last_question, answer);
     question_arry[last_question] = answer;
     console.log("Q: "+question_+"\nA: "+answer);
     document.getElementById('user_input').value = "";
@@ -1405,8 +1426,10 @@ function submit_text() {
 }
 
 function saveAPICred() {
-  localStorage.setItem("api_base",document.getElementById('api_base').value)
-  localStorage.setItem("api_key",document.getElementById('api_key').value)
+  api_base = document.getElementById('api_base').value;
+  api_key = document.getElementById('api_key').value;
+  localStorage.setItem("api_base", api_base)
+  localStorage.setItem("api_key", api_key)
   document.getElementById('credentials').style.display='none';
   document.getElementById('output_window').innerHTML += "<div class='msg_text'>credentials saved</div>";
   insert_restart();
@@ -1438,7 +1461,7 @@ function submit_chat_text() {
     document.getElementById('chat_text_input').style.display='none'
     document.getElementById('thinking_box').style.display='block';
     bubble+=1;
-    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='input_text'>"+answer+"</div></div>";
+    document.getElementById('output_window').innerHTML += "<div class='text_wrap' id='text_"+bubble+"'><div class='input_text'>"+accountForHTML(answer)+"</div></div>";
     scroll2Q("text_"+bubble);
     document.getElementById('chat_user_input').value = "";
     openai_call(answer)  
@@ -1467,8 +1490,16 @@ function submit_continue() {
 
 async function openai_call(prompt_text) {
 
+  // Read the saved endpoint at request time so a newly-added #lmstudio tag is
+  // honored without requiring a page reload. Keep the marker for mode detection
+  // but never send the URL fragment over HTTP.
+  const configuredApiBase = localStorage.getItem('api_base') || api_base;
+  api_base = configuredApiBase;
+  const lmStudioEndpoint = isLMStudioEndpoint(configuredApiBase);
+  const expectsJSONResponse = json_mode >= 1;
+
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", api_base);
+  xhr.open("POST", lmStudioEndpoint ? stripLMStudioEndpointTag(configuredApiBase) : configuredApiBase);
 
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("Authorization", "Bearer "+api_key);
@@ -1477,9 +1508,13 @@ async function openai_call(prompt_text) {
      if (xhr.readyState === 4) {
       try {
         console.log(xhr.responseText);
-        LLM_text = JSON.parse(xhr.responseText)["choices"][0]["message"]["content"];
+        const responsePayload = JSON.parse(xhr.responseText);
+        const rawLLMText = responsePayload["choices"][0]["message"]["content"];
+        LLM_text = (lmStudioEndpoint && !expectsJSONResponse)
+          ? unwrapLMStudioTextResponse(rawLLMText)
+          : rawLLMText;
         llm_messages.push({"role": "assistant", "content": LLM_text})
-        after_build(LLM_text, JSON.parse(xhr.responseText)["choices"][0]["finish_reason"]);
+        after_build(LLM_text, responsePayload["choices"][0]["finish_reason"]);
         console.log("BEHAVIOR:"+behavior)
         if ((behavior!="chat") && (behavior!="next")) { 
           llm_messages = []  
@@ -1506,7 +1541,7 @@ async function openai_call(prompt_text) {
               after_build(LLM_text)
 
             }
-          } else if ((output_type==1) & (json_mode==1) & (JSON.parse(xhr.responseText)["error"]["message"].includes("response_format"))) {
+          } else if (!lmStudioEndpoint && (output_type==1) && (json_mode==1) && (JSON.parse(xhr.responseText)["error"]["message"].includes("response_format"))) {
             console.log("Removing json flag, trying again...")
             json_mode = 2;
             openai_call(prompt_text);
@@ -1538,7 +1573,8 @@ async function openai_call(prompt_text) {
     }};
 
 
-  llm_messages.push({"role": "user", "content": prompt_text})
+  const request_prompt = (json_mode >= 1 && !lmStudioEndpoint) ? addJSONOutputGuardrail(prompt_text) : prompt_text;
+  llm_messages.push({"role": "user", "content": request_prompt})
   var data = {
             "model": model, 
             "messages": llm_messages,
@@ -1546,74 +1582,12 @@ async function openai_call(prompt_text) {
             "max_tokens": max_tokens
           };
 
-  if (json_mode==1) {
+  if (lmStudioEndpoint) {
+    console.log("LM Studio endpoint: attaching JSON schema");
+    data["response_format"] = buildLMStudioResponseFormat(prompt_text, expectsJSONResponse);
+  } else if (json_mode==1) {
     console.log("Attempting JSON mode");
-    if (localStorage.api_base.includes('#lmstudio')) {
-      data["response_format"]= {
-        "type": "json_schema",
-        "json_schema": {
-          "name": "llm_response",
-          "strict": "true",
-          "schema": {
-            "type": "object",
-            "properties": {}
-          }
-        }
-      }
-      if (prompt_text.startsWith(`Produce a JSON object where the key is \"genre\"`)) {
-        data["response_format"]["json_schema"]["schema"]["properties"] = {
-          "genre": {
-            "type": "string"
-          }
-        }
-        data["response_format"]["json_schema"]["schema"]["required"] = ["genre"]
-      } else if (prompt_text.endsWith(`\"title\" and it contains an evocative and appropriate title for the type of story you want to tell. \n\n`)) {
-        data["response_format"]["json_schema"]["schema"]["properties"] = {
-          "opening": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          } 
-        }
-        data["response_format"]["json_schema"]["schema"]["required"] = ["title","opening"]
-      } else if (prompt_text.endsWith(`Don't hide information in the protagonist's mind. The reader should know everything they do and in detail. \n`)) {
-        data["response_format"]["json_schema"]["schema"]["properties"] = {
-          "difficulty": {
-            "type": "string"
-          },
-          "difficulty_cutoff": {
-            "type": "integer"
-          },
-          "roll": {
-            "type": "integer"
-          },
-          "success": {
-            "type": "integer"
-          },
-          "narrative": {
-            "type": "string"
-          }
-        }
-        data["response_format"]["json_schema"]["schema"]["required"] = ["difficulty","difficulty_cutoff","roll","success","narrative"]
-      } else if (prompt_text.startsWith(`You're helping write a short story. `)) {
-        data["response_format"]["json_schema"]["schema"]["properties"] = {
-          "next_beat": {
-            "type": "string"
-          }
-        }
-        data["response_format"]["json_schema"]["schema"]["required"] = ["next_beat"]
-      } else if (prompt_text.startsWith(`In a moment, I'm going to show you some background materials used to run a role playing game, followed by the text of how things played out.`)) {
-        data["response_format"]["json_schema"]["schema"]["properties"] = {
-          "next_beat": {
-            "type": "string"
-          }
-        }
-        data["response_format"]["json_schema"]["schema"]["required"] = ["next_beat"]
-      }     
-    } else {
-      data["response_format"]={ "type": "json_object" }  
-    }           
+    data["response_format"]={ "type": "json_object" };
   }
 
   console.log(data);
@@ -1634,14 +1608,18 @@ function insert_restart(){
 
 function after_build(LLM_text,finish_reason="stop") {
   
-  if ((overflow==1) && (behavior=="chat")) {
-    LLM_text_collection += LLM_text;
+  // Keep raw JSON intact until it has been parsed. Plain story text can be
+  // normalized immediately so escape artifacts never enter the editor/scratch pad.
+  const collected_text = json_mode >= 1 ? LLM_text : normalizeLLMTextArtifacts(LLM_text);
+  if (overflow==1) {
+    LLM_text_collection += collected_text;
   } else {
-    LLM_text_collection = LLM_text;
+    LLM_text_collection = collected_text;
   }
 
   // add line breaks for screen output
-  LLM_text_formatted = accountForHTML(LLM_text);
+  const display_text = json_mode >= 1 ? LLM_text : collected_text;
+  LLM_text_formatted = accountForHTML(display_text);
   LLM_text_formatted = LLM_text_formatted.replaceAll(/```([^`]*)```\n?/g, "<pre class='code_wrapper'><code>$1</code></pre>");
   LLM_text_formatted = LLM_text_formatted.replaceAll(/`([^`]*)`/g, "<code>$1</code>");
   LLM_text_formatted = LLM_text_formatted.trim();
@@ -1655,20 +1633,21 @@ function after_build(LLM_text,finish_reason="stop") {
   }
 
   // Check on json formatting
-  if (json_mode>=1) {
+  if (json_mode>=1 && finish_reason!="length") {
     console.log("Attempting to parse JSON...")
     try {
-      passThrough = JSON.parse(LLM_text_collection.trim());
+      passThrough = normalizeLLMJSONStrings(parseJSONResponse(LLM_text_collection));
       LLM_text_collection = JSON.stringify(passThrough, null, 2);        
     } catch (error) {
-      alert("Warning: Output isn't JSON. Leaving as is! This may cause issues.")
+      console.error("Invalid JSON returned by the LLM:", error);
+      alert("Warning: The model returned invalid JSON. Leaving the response as text; chained prompts may not work correctly.")
       passThrough = LLM_text_collection;     
     }
   } else {
     passThrough = LLM_text_collection;
   }
 
-  output_words = LLM_text_collection.match(/\b(\w+)\b/g).length;
+  output_words = (LLM_text_collection.match(/\b(\w+)\b/g) || []).length;
   output_characters = LLM_text_collection.length;
 
   // Output location
@@ -1678,7 +1657,7 @@ function after_build(LLM_text,finish_reason="stop") {
   } else if (output_to==2) {
     document.getElementById('scratch_pad').value += LLM_text_collection;
     document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output appended to scratch pad (~"+output_words.toLocaleString()+" words / ~"+output_characters.toLocaleString()+" characters)</div>";
-    localStorage.setItem('scratch_pad', localStorage.getItem('scratch_pad')+LLM_text); // used LLM_text, not LLM_text_collection because will have already been appended
+    localStorage.setItem('scratch_pad', localStorage.getItem('scratch_pad')+collected_text); // append the current normalized chunk
   } else if (output_to==3) {
     document.getElementById('scratch_pad').value = LLM_text_collection;
     document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output replaced scratch pad (~"+output_words.toLocaleString()+" words / ~"+output_characters.toLocaleString()+" characters)</div>";
@@ -1689,7 +1668,7 @@ function after_build(LLM_text,finish_reason="stop") {
   } else if (output_to==6) {
     document.getElementById('scratch_pad').value += LLM_text_collection;
     //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output appended to scratch pad</div>";
-    localStorage.setItem('scratch_pad', localStorage.getItem('scratch_pad')+LLM_text); // used LLM_text, not LLM_text_collection because will have already been appended
+    localStorage.setItem('scratch_pad', localStorage.getItem('scratch_pad')+collected_text); // append the current normalized chunk
   } else if (output_to==7) {
     document.getElementById('scratch_pad').value = LLM_text_collection;
     //document.getElementById('output_window').innerHTML += "<div class='msg_text'>above output replaced scratch pad</div>";
@@ -1700,7 +1679,7 @@ function after_build(LLM_text,finish_reason="stop") {
 
   overflow=0;
 
-  if ((finish_reason=="length") && (behavior=="chat")) {
+  if (finish_reason=="length") {
     overflow=1;
     document.getElementById('continue_gen').style.display='block';
     calls=0;

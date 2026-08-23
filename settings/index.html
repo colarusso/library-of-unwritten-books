@@ -5,7 +5,7 @@
   <base href="../">
 
 <!-- Page-specific metadata -->
-<title>Tips | The Library of Unwritten Books</title>
+<title>Settings | The Library of Unwritten Books</title>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Settings | The Library of Unwritten Books"/>
 <meta property="og:description" content="Like most things in life, what you get out of your unwritten book depends on what you put in. If you respond passively, providing short replies or taking only the road presented, your journey will stay safe and predictable. I for one find this unsatisfying. It may also lead you to believe the Library's stories aren't that good. To which I would respond, &quot;You are a reader-author, act like it!&quot; Only by embracing your role as an author will the stories be anything more than average. That's because the machine-generated text is a string of the next most-plausible words. How does it decide what's &quot;most plausible?&quot; Well, it actually kind of averages all the texts in its training data. By default, these stories are average. They also tend to lack strong plotting. Mostly, it's one thing after another, each scene shaped by what came before and genre conventions. Given these realities, I've found the following two mindsets to work best when read-writing, those of goal seekers and zeitgeist explorers. Both recognize the need to actively push at the boundaries of the world in which they find themselves.  "/>
@@ -31,7 +31,8 @@
 <!-- JS & style -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="css/style.css?v=2024-07-21">
-<script src="js/functions.js?v=2024-07-21"></script>
+<script src="js/functions.js?v=2026-08-23"></script>
+<script src="js/tts.js?v=2026-08-23"></script>
 
 <!-- AddToAny -->
 <script>
@@ -80,10 +81,17 @@
 
   <h2><a name="tts" href="settings/#tts" class="anchor" alt="deep link to this section"></a>Text-to-Speech</h2>
 
-  <div>Reading Speed: <i id="wpm_n">175</i> words/minute</div>
-  <input type="range" min="0" max="800" value="175" class="slider" id="wpm" onInput="document.getElementById('wpm_n').innerHTML = this.value;localStorage.setItem('wpm', this.value);">
+  <div>Approx. Reading Speed: <i id="wpm_n">175</i> words/minute (<i id="tts_rate_n">1.00</i>&times; browser rate)</div>
+  <input type="range" min="25" max="800" step="5" value="175" class="slider" id="wpm" onInput="updateSpeechRateDisplay(this.value);localStorage.setItem('wpm', this.value);">
+  <small>Browsers expose speech speed as a multiplier relative to the selected voice, not as an exact words-per-minute value. The WPM figure is therefore an estimate; 175 WPM maps to the voice's normal 1&times; rate.</small>
+
+  <div style="margin-top:15px;"><label for="tts_voice">Voice:</label></div>
+  <select id="tts_voice" aria-label="Text-to-speech voice">
+    <option value="">Browser default</option>
+  </select>
+  <p><small>The available voices come from your browser and operating system. If your browser loads voices after the page opens, this list will refresh automatically.</small></p>
   
-  <h2><a name="storage" href="settings/#storage" class="anchor" alt="deep link to this section"></a>LocalStorgae</h2>
+  <h2><a name="storage" href="settings/#storage" class="anchor" alt="deep link to this section"></a>LocalStorage</h2>
 
   <p>
     This site stores information, like your <a href="card/">LLM credentials</a> and current story, as part of your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">localStorage</a>. This isn't shared with the site's author. However, if someone has access to your browser, they could see this data. To remove all such data, click <a href="javascript:localStorage.clear();document.getElementById('wpm').value = 175;document.getElementById('wpm_n').innerHTML = 175;localStorage.setItem('wpm',175);alert('localStorage cleared!');location.reload();">remove my saved data</a>.
@@ -91,7 +99,7 @@
 
   <hr>
   <p>
-    <b>Questions or comments?</b> I'm on Mastodon <a href="https://mastodon.social/@Colarusso" target="_blank">@Colarusso@mastodon.social</a>
+    <b>Questions or comments?</b> I'm on Bluesky <a href="https://bsky.app/profile/davidcolarusso.com" target="_blank">@davidcolarusso.com</a>
   </p>
 
 
@@ -108,10 +116,38 @@
 </div>
 </div>
 <script>
-  const wordsPerMinute = localStorage.getItem('wpm') || document.getElementById('wpm').value; // Average reading speed
-  document.getElementById('wpm').value = wordsPerMinute;
-  document.getElementById('wpm_n').innerHTML = wordsPerMinute;
-  localStorage.setItem('wpm',wordsPerMinute);
+  function updateSpeechRateDisplay(value) {
+    const wordsPerMinute = Math.max(MIN_WPM, Math.min(MAX_WPM, Number(value) || DEFAULT_WPM));
+    document.getElementById('wpm_n').textContent = wordsPerMinute;
+    document.getElementById('tts_rate_n').textContent = wpmToSpeechRate(wordsPerMinute).toFixed(2);
+  }
+
+  const wordsPerMinute = getStoredSpeechWpm();
+  const speedSlider = document.getElementById('wpm');
+  speedSlider.value = wordsPerMinute;
+  updateSpeechRateDisplay(wordsPerMinute);
+  localStorage.setItem('wpm', wordsPerMinute);
+
+  speedSlider.addEventListener('change', function () {
+    previewSpeechSettings();
+  });
+
+  const voiceSelect = document.getElementById('tts_voice');
+  const refreshVoices = () => populateVoiceSelect(voiceSelect);
+  refreshVoices();
+
+  voiceSelect.addEventListener('change', function () {
+    saveVoicePreference(this.value);
+    previewSpeechSettings();
+  });
+
+  if ('speechSynthesis' in window) {
+    if (typeof window.speechSynthesis.addEventListener === 'function') {
+      window.speechSynthesis.addEventListener('voiceschanged', refreshVoices);
+    } else {
+      window.speechSynthesis.onvoiceschanged = refreshVoices;
+    }
+  }
 </script>
 
 </BODY></HTML>
